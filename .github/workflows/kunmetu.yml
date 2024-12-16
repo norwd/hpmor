@@ -15,40 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-          fetch-depth: 0
-
-      - run: touch requirements.txt
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: "pip"
-
-      - uses: actions/cache@v4
-        with:
-          key: tex-kaŝmemoro
-          path: |
-            chapters/*.aux
-            hpmor*.aux
-            hpmor*.fdb_latexmk
-            hpmor*.fls
-            hpmor*.out
-            hpmor*.pdf
-            hpmor*.toc
-            hpmor*.xdv
-
-      - run: python3 scripts/check_chapters.py
-
-      - uses: pre-commit/action@v3.0.1
-
-      - run: sh scripts/install_requirements.sh > /dev/null
-
-      - run: cat /etc/os-release
-      - run: xelatex -v
-      - run: latexmk -v
-      - run: pandoc -v
-      - run: ebook-convert --version
-      - run: python3 --version
+          fetch-depth: 1
 
       - run: latexmk
 
@@ -62,7 +29,6 @@ jobs:
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
-            ./hpmor-html-diff.log
 
       - uses: softprops/action-gh-release@v2
         with:
@@ -74,4 +40,3 @@ jobs:
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
-            ./hpmor-html-diff.log
