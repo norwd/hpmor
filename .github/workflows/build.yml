@@ -23,19 +23,19 @@ jobs:
       - name: Touch requirements.txt for pip caching
         run: touch requirements.txt
 
-      #- name: Caching LaTeX files
-      #  uses: actions/cache@v4
-      #  with:
-      #    path: |
-      #      chapters/*.aux
-      #      hpmor*.aux
-      #      hpmor*.fdb_latexmk
-      #      hpmor*.fls
-      #      hpmor*.out
-      #      hpmor*.pdf
-      #      hpmor*.toc
-      #      hpmor*.xdv
-      #    key: tex-cache
+      - name: Caching LaTeX files
+        uses: actions/cache@v4
+        with:
+          path: |
+            chapters/*.aux
+            hpmor*.aux
+            hpmor*.fdb_latexmk
+            hpmor*.fls
+            hpmor*.out
+            hpmor*.pdf
+            hpmor*.toc
+            hpmor*.xdv
+          key: tex-cache
 
       - name: Python set up
         uses: actions/setup-python@v5
