@@ -17,6 +17,9 @@ jobs:
           persist-credentials: false
           fetch-depth: 1
 
+      - run: touch requirements.txt
+      - run: sh scripts/install_requirements.sh
+
       - run: latexmk
 
       - uses: actions/upload-artifact@v4
