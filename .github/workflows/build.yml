@@ -91,7 +91,7 @@ jobs:
         with:
           name: ebooks
           path: |
-            ./hpmor.pdf
+            ./hpmor*.pdf
             ./hpmor.html
             ./hpmor-html-diff.log
             ./hpmor.epub
