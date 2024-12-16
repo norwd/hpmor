@@ -1,0 +1,82 @@
+name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
+run-name: "Kunmetu HPMOR PDF-dosierojn kaj Bitlibrojn"
+
+on:
+  push:
+    branches:
+      - "esperantigo/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - run: touch requirements.txt
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - uses: actions/cache@v4
+        with:
+          key: tex-kaŝmemoro
+          path: |
+            chapters/*.aux
+            hpmor*.aux
+            hpmor*.fdb_latexmk
+            hpmor*.fls
+            hpmor*.out
+            hpmor*.pdf
+            hpmor*.toc
+            hpmor*.xdv
+
+      - run: python3 scripts/check_chapters.py
+
+      - uses: pre-commit/action@v3.0.1
+
+      - run: sh scripts/install_requirements.sh > /dev/null
+
+      - run: cat /etc/os-release
+      - run: xelatex -v
+      - run: latexmk -v
+      - run: pandoc -v
+      - run: ebook-convert --version
+      - run: python3 --version
+
+      - run: wget --quiet "https://github.com/${{ github.repository }}/releases/tag/WorkInProgress/hpmor.html" -O hpmor-prev.html
+
+      - run: sh scripts/make_pdfs.sh > /dev/null
+      - run: sh scripts/make_ebooks.sh
+
+      - run: diff -u hpmor-prev.html hpmor.html > hpmor-html-diff.log || echo "::error file=hpmor-prev.html::Okazis eraro dum komparado de HTML-dosieroj"
+      - run: rm hpmor-prev.html
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bitlibrojn
+          retention-days: 14
+          path: |
+            ./hpmor*.pdf
+            ./hpmor.epub
+            ./hpmor.mobi
+            ./hpmor.fb2
+            ./hpmor.html
+            ./hpmor-html-diff.log
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: WorkInProgress
+          prerelease: true
+          files: |
+            ./hpmor*.pdf
+            ./hpmor.epub
+            ./hpmor.mobi
+            ./hpmor.fb2
+            ./hpmor.html
+            ./hpmor-html-diff.log
