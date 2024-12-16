@@ -6,7 +6,8 @@ name: Build HPMOR PDFs and eBooks
 on:
   workflow_dispatch: # manual triggering
   push:
-    branches: [main]
+    branches:
+      - "esperantigo/**"
 
 jobs:
   build:
@@ -17,24 +18,24 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-          fetch-depth: 1 # 0 if you want to push to repo
+          fetch-depth: 0
 
       - name: Touch requirements.txt for pip caching
         run: touch requirements.txt
 
-      - name: Caching LaTeX files
-        uses: actions/cache@v4
-        with:
-          path: |
-            chapters/*.aux
-            hpmor*.aux
-            hpmor*.fdb_latexmk
-            hpmor*.fls
-            hpmor*.out
-            hpmor*.pdf
-            hpmor*.toc
-            hpmor*.xdv
-          key: tex-cache
+      #- name: Caching LaTeX files
+      #  uses: actions/cache@v4
+      #  with:
+      #    path: |
+      #      chapters/*.aux
+      #      hpmor*.aux
+      #      hpmor*.fdb_latexmk
+      #      hpmor*.fls
+      #      hpmor*.out
+      #      hpmor*.pdf
+      #      hpmor*.toc
+      #      hpmor*.xdv
+      #    key: tex-cache
 
       - name: Python set up
         uses: actions/setup-python@v5
@@ -90,7 +91,7 @@ jobs:
         with:
           name: ebooks
           path: |
-            ./hpmor.pdf
+            ./hpmor*.pdf
             ./hpmor.html
             ./hpmor-html-diff.log
             ./hpmor.epub
