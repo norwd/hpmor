@@ -6,7 +6,9 @@ name: Build HPMOR PDFs and eBooks
 on:
   workflow_dispatch: # manual triggering
   push:
-    branches: [main]
+    branches:
+      - 'main'
+      - 'esperantigo/**'
 
 jobs:
   build:
