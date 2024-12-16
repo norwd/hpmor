@@ -7,7 +7,8 @@ on:
       - "esperantigo/**"
 
 jobs:
-  build:
+  kunmetu:
+    name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
     runs-on: ubuntu-latest
     steps:
 
@@ -49,13 +50,7 @@ jobs:
       - run: ebook-convert --version
       - run: python3 --version
 
-      - run: wget --quiet "https://github.com/${{ github.repository }}/releases/tag/WorkInProgress/hpmor.html" -O hpmor-prev.html
-
-      - run: sh scripts/make_pdfs.sh > /dev/null
-      - run: sh scripts/make_ebooks.sh
-
-      - run: diff -u hpmor-prev.html hpmor.html > hpmor-html-diff.log || echo "::error file=hpmor-prev.html::Okazis eraro dum komparado de HTML-dosieroj"
-      - run: rm hpmor-prev.html
+      - run: latexmk
 
       - uses: actions/upload-artifact@v4
         with:
