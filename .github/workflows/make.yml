@@ -6,8 +6,7 @@ name: Build HPMOR PDFs and eBooks
 on:
   workflow_dispatch: # manual triggering
   push:
-    branches:
-      - "esperantigo/**"
+    branches: [main]
 
 jobs:
   build:
@@ -18,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-          fetch-depth: 0
+          fetch-depth: 1 # 0 if you want to push to repo
 
       - name: Touch requirements.txt for pip caching
         run: touch requirements.txt
@@ -91,7 +90,7 @@ jobs:
         with:
           name: ebooks
           path: |
-            ./hpmor*.pdf
+            ./hpmor.pdf
             ./hpmor.html
             ./hpmor-html-diff.log
             ./hpmor.epub
