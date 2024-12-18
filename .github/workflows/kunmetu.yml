@@ -6,6 +6,10 @@ on:
     branches:
       - "esperantigo/**"
 
+concurrency:
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: false
+
 jobs:
   kunmetu:
     name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
