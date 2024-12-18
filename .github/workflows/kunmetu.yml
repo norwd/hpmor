@@ -6,6 +6,10 @@ on:
     branches:
       - "esperantigo/**"
 
+concurrency:
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: false
+
 jobs:
   kunmetu:
     name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
@@ -21,7 +25,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
 
       - run: sh scripts/install_requirements.sh
 
