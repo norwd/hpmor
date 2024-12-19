@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/cache@v4
         with:
-          key: ${{ github.workflow_sha }}-kaŝmemoro
+          key: ${{ github.workflow_ref }}-kaŝmemoro
           path: |
             **/*.aux
             **/*.aux
