@@ -3,8 +3,7 @@ run-name: "Kunmetu HPMOR PDF-dosierojn kaj Bitlibrojn"
 
 on:
   push:
-    branches:
-      - "esperantigo/**"
+    branches-ignore: [main]
 
 concurrency:
   group: ${{ github.workflow_ref }}
