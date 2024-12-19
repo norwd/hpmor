@@ -19,6 +19,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: actions/cache@v4
+        with:
+          key: ${{ github.workflow_sha }}-kaŝmemoro
+          path: |
+            **/*.aux
+            **/*.aux
+            **/*.fdb_latexmk
+            **/*.fls
+            **/*.out
+            **/*.pdf
+            **/*.toc
+            **/*.xdv
+
       - run: touch requirements.txt
 
       - uses: actions/setup-python@v5
