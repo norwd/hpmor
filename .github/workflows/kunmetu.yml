@@ -55,7 +55,10 @@ jobs:
 
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: WorkInProgress
+          name: "Laboro en Progreso"
+          body: "Ĉi tiu eldono estas laboro en progreso."
+          target_commitish: ${{ github.sha }}
+          tag_name: LaboroEnProgreso
           prerelease: true
           files: |
             ./hpmor*.pdf
