@@ -5,13 +5,9 @@ name: Check new commits and PRs
 on:
   workflow_dispatch:
   push:
-    branches:
-      - "main"
-      - "esperantigo/**"
+    branches: [main]
   pull_request:
-    branches:
-      - "main"
-      - "esperantigo/**"
+    branches: [main]
 
 permissions:
   contents: read
