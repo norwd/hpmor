@@ -228,7 +228,7 @@ def tex2html(s: str) -> str:
     #
     # Bulk text replacements
     # Chapter 00 - Preface
-    if "Author’s introduction" in s:
+    if "Enkonduko de la Verkisto" in s:
         s = re.sub(
             r"\\begin\{itemize\}(.*?)\\end\{itemize\}",
             r"<ul>\n\1\n</ul>",
