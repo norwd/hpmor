@@ -65,7 +65,7 @@
 
 	\renewcommand*{\printchapternum}{%
 		\chapnumfont \hyperref[contents]{\textls[30]{
-\IfInteger{\thechapter}{\NUMBERstring{chapter}}{\thechapter}
+\IfInteger{\thechapter}{\value{chapter}}{\thechapter}
 }}}
 
 	\renewcommand*{\printchaptername}{%
