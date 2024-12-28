@@ -1,0 +1,63 @@
+name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
+run-name: "Kunmetu HPMOR PDF-dosierojn kaj Bitlibrojn"
+
+on:
+  push:
+    branches-ignore: [main]
+
+concurrency:
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: false
+
+jobs:
+  kunmetu:
+    name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - run: touch requirements.txt
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: wget --quiet "${URL}" -O hpmor-prev.html
+        env:
+          URL: https://github.com/${{ github.repository }}/releases/tag/LaboroEnProgreso/hpmor.html
+
+      - run: sh scripts/install_requirements.sh
+      - run: sh scripts/make_pdfs.sh
+      - run: sh scripts/make_ebooks.sh
+
+      - run: |
+          diff -u hpmor-prev.html hpmor.html > hpmor-html-diff.log || :
+          rm hpmor-prev.html
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bitlibrojn
+          retention-days: 14
+          path: |
+            ./hpmor*.pdf
+            ./hpmor.epub
+            ./hpmor.mobi
+            ./hpmor.fb2
+            ./hpmor.html
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: "Laboro en Progreso"
+          body: "Ĉi tiu eldono estas laboro en progreso."
+          target_commitish: ${{ github.sha }}
+          tag_name: LaboroEnProgreso
+          prerelease: true
+          files: |
+            ./hpmor*.pdf
+            ./hpmor.epub
+            ./hpmor.mobi
+            ./hpmor.fb2
+            ./hpmor.html
