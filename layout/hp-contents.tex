@@ -22,7 +22,7 @@
 \renewcommand*{\cftchapterfont}{}
 
 \renewcommand\partnumberline[1]{\hfil\thispagestyle{empty}{\hpfont\textls[30]{\large\MakeUppercase{\partname} #1}}\hfil\strut\par\nopagebreak\hfil}
-\renewcommand\chapternumberline[1]{\hfil\thispagestyle{empty}{\hpfont\textls[30]{\IfInteger{#1}{\value{#1}}{Appendix #1}}}\hfil\strut\par\nopagebreak\hfil}
+\renewcommand\chapternumberline[1]{\hfil\thispagestyle{empty}{\hpfont\textls[30]{\IfInteger{#1}{\the\value{#1}}{Appendix #1}}}\hfil\strut\par\nopagebreak\hfil}
 
 \settocdepth{chapter}
 \phantomsection
