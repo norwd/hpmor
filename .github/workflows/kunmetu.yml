@@ -48,7 +48,8 @@ jobs:
             ./hpmor.fb2
             ./hpmor.html
 
-      - uses: softprops/action-gh-release@v2
+      - if: github.ref_name == 'esperantigo/unua-provo'
+        uses: softprops/action-gh-release@v2
         with:
           name: "Laboro en Progreso"
           body: "Ĉi tiu eldono estas laboro en progreso."
