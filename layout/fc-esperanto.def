@@ -1,0 +1,570 @@
+% \subsubsection{fc-esperanto.def}
+% Esperanto definitions
+%    \begin{macrocode}
+\ProvidesFCLanguage{esperanto}[2024/12/28]%
+%    \end{macrocode}
+% Define macro that converts a number or count register (first 
+% argument) to an ordinal, and stores the result in the 
+% second argument, which should be a control sequence.
+%    \begin{macrocode}
+\newcommand*\@ordinalMesperanto[2]{%
+\def\@fc@ord{}%
+\@orgargctr=#1\relax
+\@ordinalctr=#1%
+\@FCmodulo{\@ordinalctr}{100}%
+\ifnum\@ordinalctr=11\relax
+  \def\@fc@ord{a}%
+\else
+  \ifnum\@ordinalctr=12\relax
+    \def\@fc@ord{a}%
+  \else
+    \ifnum\@ordinalctr=13\relax
+      \def\@fc@ord{a}%
+    \else
+      \@FCmodulo{\@ordinalctr}{10}%
+      \ifcase\@ordinalctr
+        \def\@fc@ord{a}%      case 0
+        \or \def\@fc@ord{a}%  case 1
+        \or \def\@fc@ord{a}%  case 2
+        \or \def\@fc@ord{a}%  case 3
+      \else
+        \def\@fc@ord{a}%      default case
+      \fi
+    \fi
+  \fi
+\fi
+\edef#2{\number#1\relax\noexpand\fmtord{\@fc@ord}}%
+}%
+\global\let\@ordinalMesperanto\@ordinalMesperanto
+%    \end{macrocode}
+% There is no gender difference in Esperanto, so make feminine and
+% neuter the same as the masculine.
+%    \begin{macrocode}
+\global\let\@ordinalFesperanto=\@ordinalMesperanto
+\global\let\@ordinalNesperanto=\@ordinalMesperanto
+%    \end{macrocode}
+% Define the macro that prints the value of a \TeX\ count register
+% as text. To make it easier, break it up into units, teens and
+% tens. First, the units: the argument should be between 0 and 9
+% inclusive.
+%    \begin{macrocode}
+\newcommand*\@@unitstringesperanto[1]{%
+  \ifcase#1\relax
+    nul%
+    \or unu%
+    \or du%
+    \or tri%
+    \or kvar%
+    \or kvin%
+    \or ses%
+    \or sep%
+    \or ok%
+    \or naŭ%
+\fi
+}%
+\global\let\@@unitstringesperanto\@@unitstringesperanto
+%    \end{macrocode}
+% Next the tens, again the argument should be between 0 and 9
+% inclusive.
+%    \begin{macrocode}
+\newcommand*\@@tenstringesperanto[1]{%
+  \ifcase#1\relax
+    \or dek%
+    \or dudek%
+    \or tridek%
+    \or kvardek%
+    \or kvindek%
+    \or sesdek%
+    \or sepdek%
+    \or okdek%
+    \or naŭdek%
+  \fi
+}%
+\global\let\@@tenstringesperanto\@@tenstringesperanto
+%    \end{macrocode}
+% Finally the teens, again the argument should be between 0 and 9
+% inclusive.
+%    \begin{macrocode}
+\newcommand*\@@teenstringesperanto[1]{%
+  \ifcase#1\relax
+    dek%
+    \or dek unu%
+    \or dek du%
+    \or dek tri%
+    \or dek kvar%
+    \or dek kvin%
+    \or dek ses%
+    \or dek sep%
+    \or dek ok%
+    \or dek naŭ%
+  \fi
+}%
+\global\let\@@teenstringesperanto\@@teenstringesperanto
+%    \end{macrocode}
+% As above, but with the initial letter in uppercase. The units:
+%    \begin{macrocode}
+\newcommand*\@@Unitstringesperanto[1]{%
+  \ifcase#1\relax
+    Nul%
+    \or Unu%
+    \or Du%
+    \or Tri%
+    \or Kvar%
+    \or Kvin%
+    \or Ses%
+    \or Sep%
+    \or Ok%
+    \or Naŭ%
+  \fi
+}%
+\global\let\@@Unitstringesperanto\@@Unitstringesperanto
+%    \end{macrocode}
+% The tens:
+%    \begin{macrocode}
+\newcommand*\@@Tenstringesperanto[1]{%
+  \ifcase#1\relax
+    \or Dek%
+    \or Dudek%
+    \or Tridek%
+    \or Kvardek%
+    \or Kvindek%
+    \or Sesdek%
+    \or Sepdek%
+    \or Okdek%
+    \or Naŭdek%
+  \fi
+}%
+\global\let\@@Tenstringesperanto\@@Tenstringesperanto
+%    \end{macrocode}
+% The teens:
+%    \begin{macrocode}
+\newcommand*\@@Teenstringesperanto[1]{%
+  \ifcase#1\relax
+    Dek%
+    \or Dek Unu%
+    \or Dek Du%
+    \or Dek Tri%
+    \or Dek Kvar%
+    \or Dek Kvin%
+    \or Dek Ses%
+    \or Dek Sep%
+    \or Dek Ok%
+    \or Dek Naŭ%
+  \fi
+}%
+\global\let\@@Teenstringesperanto\@@Teenstringesperanto
+%    \end{macrocode}
+% This has changed in version 1.09, so that it now stores
+% the result in the second argument, but doesn't display anything.
+% Since it only affects internal macros, it shouldn't affect
+% documents created with older versions. (These internal macros are
+% not meant for use in documents.)
+%    \begin{macrocode}
+\newcommand*\@@numberstringesperanto[2]{%
+\ifnum#1>99999
+\PackageError{fmtcount}{Out of range}%
+{This macro only works for values less than 100000}%
+\else
+\ifnum#1<0
+\PackageError{fmtcount}{Negative numbers not permitted}%
+{This macro does not work for negative numbers, however
+you can try typing "minus" first, and then pass the modulus of
+this number}%
+\fi
+\fi
+\def#2{}%
+\@strctr=#1\relax \divide\@strctr by 1000\relax
+\ifnum\@strctr>9
+  \divide\@strctr by 10
+  \ifnum\@strctr>1\relax
+    \let\@@fc@numstr#2\relax
+    \edef#2{\@@fc@numstr\@tenstring{\@strctr}}%
+    \@strctr=#1 \divide\@strctr by 1000\relax
+    \@FCmodulo{\@strctr}{10}%
+    \ifnum\@strctr>0\relax
+      \let\@@fc@numstr#2\relax
+      \edef#2{\@@fc@numstr-\@unitstring{\@strctr}}%
+    \fi
+  \else
+    \@strctr=#1\relax
+    \divide\@strctr by 1000\relax
+    \@FCmodulo{\@strctr}{10}%
+    \let\@@fc@numstr#2\relax
+    \edef#2{\@@fc@numstr\@teenstring{\@strctr}}%
+  \fi
+  \let\@@fc@numstr#2\relax
+  \edef#2{\@@fc@numstr\ \@thousand}%
+\else
+  \ifnum\@strctr>0\relax
+    \let\@@fc@numstr#2\relax
+    \edef#2{\@@fc@numstr\@unitstring{\@strctr}\ \@thousand}%
+  \fi
+\fi
+\@strctr=#1\relax \@FCmodulo{\@strctr}{1000}%
+\divide\@strctr by 100
+\ifnum\@strctr>0\relax
+   \ifnum#1>1000\relax
+      \let\@@fc@numstr#2\relax
+      \edef#2{\@@fc@numstr\ }%
+   \fi
+   \let\@@fc@numstr#2\relax
+   \edef#2{\@@fc@numstr\@unitstring{\@strctr}\ \@hundred}%
+\fi
+\@strctr=#1\relax \@FCmodulo{\@strctr}{100}%
+\ifnum#1>100\relax
+  \ifnum\@strctr>0\relax
+    \let\@@fc@numstr#2\relax
+    \edef#2{\@@fc@numstr\ \@andname\ }%
+  \fi
+\fi
+\ifnum\@strctr>19\relax
+  \divide\@strctr by 10\relax
+  \let\@@fc@numstr#2\relax
+  \edef#2{\@@fc@numstr\@tenstring{\@strctr}}%
+  \@strctr=#1\relax \@FCmodulo{\@strctr}{10}%
+  \ifnum\@strctr>0\relax
+    \let\@@fc@numstr#2\relax
+    \edef#2{\@@fc@numstr-\@unitstring{\@strctr}}%
+  \fi
+\else
+  \ifnum\@strctr<10\relax
+    \ifnum\@strctr=0\relax
+       \ifnum#1<100\relax
+          \let\@@fc@numstr#2\relax
+          \edef#2{\@@fc@numstr\@unitstring{\@strctr}}%
+       \fi
+    \else
+      \let\@@fc@numstr#2\relax
+      \edef#2{\@@fc@numstr\@unitstring{\@strctr}}%
+    \fi
+  \else
+    \@FCmodulo{\@strctr}{10}%
+    \let\@@fc@numstr#2\relax
+    \edef#2{\@@fc@numstr\@teenstring{\@strctr}}%
+  \fi
+\fi
+}%
+\global\let\@@numberstringesperanto\@@numberstringesperanto
+%    \end{macrocode}
+% All lower case version, the second argument must be a control
+% sequence.%
+% \changes{3.02}{2016/01/12}{Replace \cs{DeclareRobustCommand} by
+% \cs{newcommand*} as robustness is handled now at top level in
+% \texttt{fmtcount.sty}, and we don't need \cs{long} macros. Concerned
+% macros are \cs{@numberstringMesperanto}, \cs{@ordinalstringMesperanto},
+% and \cs{@OrdinalstringMesperanto}}
+%    \begin{macrocode}
+\newcommand*{\@numberstringMesperanto}[2]{%
+  \let\@unitstring=\@@unitstringesperanto
+  \let\@teenstring=\@@teenstringesperanto
+  \let\@tenstring=\@@tenstringesperanto
+  \def\@hundred{cent}\def\@thousand{mil}%
+  \def\@andname{kaj}%
+  \@@numberstringesperanto{#1}{#2}%
+}%
+\global\let\@numberstringMesperanto\@numberstringMesperanto
+%    \end{macrocode}
+% There is no gender in Esperanto, so make feminine and neuter the
+% same
+% as the masculine.
+%    \begin{macrocode}
+\global\let\@numberstringFesperanto=\@numberstringMesperanto
+\global\let\@numberstringNesperanto=\@numberstringMesperanto
+%    \end{macrocode}
+% This version makes the first letter of each word an uppercase
+% character (except ``and''). The second argument must be a control 
+% sequence.
+%    \begin{macrocode}
+\newcommand*\@NumberstringMesperanto[2]{%
+  \let\@unitstring=\@@Unitstringesperanto
+  \let\@teenstring=\@@Teenstringesperanto
+  \let\@tenstring=\@@Tenstringesperanto
+  \def\@hundred{Cent}\def\@thousand{Mil}%
+  \def\@andname{kaj}%
+  \@@numberstringesperanto{#1}{#2}%
+}%
+\global\let\@NumberstringMesperanto\@NumberstringMesperanto
+%    \end{macrocode}
+% There is no gender in Esperanto, so make feminine and neuter the
+% same
+% as the masculine.
+%    \begin{macrocode}
+\global\let\@NumberstringFesperanto=\@NumberstringMesperanto
+\global\let\@NumberstringNesperanto=\@NumberstringMesperanto
+%    \end{macrocode}
+% Define a macro that produces an ordinal as a string. Again, break
+% it up into units, teens and tens. First the units:
+%    \begin{macrocode}
+\newcommand*\@@unitthstringesperanto[1]{%
+  \ifcase#1\relax
+    nula%
+    \or unua%
+    \or dua%
+    \or tria%
+    \or kvara%
+    \or kvina%
+    \or sesa%
+    \or sepa%
+    \or oka%
+    \or naŭa%
+  \fi
+}%
+\global\let\@@unitthstringesperanto\@@unitthstringesperanto
+%    \end{macrocode}
+% Next the tens:
+%    \begin{macrocode}
+\newcommand*\@@tenthstringesperanto[1]{%
+  \ifcase#1\relax
+    \or deka%
+    \or dudeka%
+    \or trideka%
+    \or kvardeka%
+    \or kvindeka%
+    \or sesdeka%
+    \or sepdeka%
+    \or okdeka%
+    \or naŭdeka%
+  \fi
+}%
+\global\let\@@tenthstringesperanto\@@tenthstringesperanto
+%    \end{macrocode}
+% The teens:
+%    \begin{macrocode}
+\newcommand*\@@teenthstringesperanto[1]{%
+  \ifcase#1\relax
+    deka%
+    \or dek unua%
+    \or dek dua%
+    \or dek tria%
+    \or dek kvara%
+    \or dek kvina%
+    \or dek sesa%
+    \or dek sepa%
+    \or dek oka%
+    \or dek naŭa%
+  \fi
+}%
+\global\let\@@teenthstringesperanto\@@teenthstringesperanto
+%    \end{macrocode}
+% As before, but with the first letter in upper case. The units:
+%    \begin{macrocode}
+\newcommand*\@@Unitthstringesperanto[1]{%
+  \ifcase#1\relax
+    Nula%
+    \or Unua%
+    \or Dua%
+    \or Tria%
+    \or Kvara%
+    \or Kvina%
+    \or Sesa%
+    \or Sepa%
+    \or Oka%
+    \or Naŭa%
+  \fi
+}%
+\global\let\@@Unitthstringesperanto\@@Unitthstringesperanto
+%    \end{macrocode}
+% The tens:
+%    \begin{macrocode}
+\newcommand*\@@Tenthstringesperanto[1]{%
+  \ifcase#1\relax
+    \or Deka%
+    \or Dudeka%
+    \or Trideka%
+    \or Kvardeka%
+    \or Kvindeka%
+    \or Sesdeka%
+    \or Sepdeka%
+    \or Okdeka%
+    \or Naŭdeka%
+  \fi
+}%
+\global\let\@@Tenthstringesperanto\@@Tenthstringesperanto
+%    \end{macrocode}
+% The teens:
+%    \begin{macrocode}
+\newcommand*\@@Teenthstringesperanto[1]{%
+  \ifcase#1\relax
+    Deka%
+    \or Dek Unua%
+    \or Dek Dua%
+    \or Dek Tria%
+    \or Dek Kvara%
+    \or Dek Kvina%
+    \or Dek Sesa%
+    \or Dek Sepa%
+    \or Dek Oka%
+    \or Dek Naŭa%
+  \fi
+}%
+\global\let\@@Teenthstringesperanto\@@Teenthstringesperanto
+%    \end{macrocode}
+% Again, as from version 1.09, this has been changed to take two
+% arguments, where the second argument is a control sequence.
+% The resulting text is stored in the control sequence, and nothing
+% is displayed.
+%    \begin{macrocode}
+\newcommand*\@@ordinalstringesperanto[2]{%
+\@strctr=#1\relax
+\ifnum#1>99999
+\PackageError{fmtcount}{Out of range}%
+{This macro only works for values less than 100000 (value given: \number\@strctr)}%
+\else
+\ifnum#1<0
+\PackageError{fmtcount}{Negative numbers not permitted}%
+{This macro does not work for negative numbers, however
+you can try typing "minus" first, and then pass the modulus of
+this number}%
+\fi
+\def#2{}%
+\fi
+\@strctr=#1\relax \divide\@strctr by 1000\relax
+\ifnum\@strctr>9\relax
+%    \end{macrocode}
+% \#1 is greater or equal to 10000
+%    \begin{macrocode}
+  \divide\@strctr by 10
+  \ifnum\@strctr>1\relax
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\@tenstring{\@strctr}}%
+    \@strctr=#1\relax
+    \divide\@strctr by 1000\relax
+    \@FCmodulo{\@strctr}{10}%
+    \ifnum\@strctr>0\relax
+      \let\@@fc@ordstr#2\relax
+      \edef#2{\@@fc@ordstr-\@unitstring{\@strctr}}%
+    \fi
+  \else
+    \@strctr=#1\relax \divide\@strctr by 1000\relax
+    \@FCmodulo{\@strctr}{10}%
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\@teenstring{\@strctr}}%
+  \fi
+  \@strctr=#1\relax \@FCmodulo{\@strctr}{1000}%
+  \ifnum\@strctr=0\relax
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\ \@thousandth}%
+  \else
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\ \@thousand}%
+  \fi
+\else
+  \ifnum\@strctr>0\relax
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\@unitstring{\@strctr}}%
+    \@strctr=#1\relax \@FCmodulo{\@strctr}{1000}%
+    \let\@@fc@ordstr#2\relax
+    \ifnum\@strctr=0\relax
+      \edef#2{\@@fc@ordstr\ \@thousandth}%
+    \else
+      \edef#2{\@@fc@ordstr\ \@thousand}%
+    \fi
+  \fi
+\fi
+\@strctr=#1\relax \@FCmodulo{\@strctr}{1000}%
+\divide\@strctr by 100
+\ifnum\@strctr>0\relax
+  \ifnum#1>1000\relax
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\ }%
+  \fi
+  \let\@@fc@ordstr#2\relax
+  \edef#2{\@@fc@ordstr\@unitstring{\@strctr}}%
+  \@strctr=#1\relax \@FCmodulo{\@strctr}{100}%
+  \let\@@fc@ordstr#2\relax
+  \ifnum\@strctr=0\relax
+    \edef#2{\@@fc@ordstr\ \@hundredth}%
+  \else
+    \edef#2{\@@fc@ordstr\ \@hundred}%
+  \fi
+\fi
+\@strctr=#1\relax \@FCmodulo{\@strctr}{100}%
+\ifnum#1>100\relax
+  \ifnum\@strctr>0\relax
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\ \@andname\ }%
+  \fi
+\fi
+\ifnum\@strctr>19\relax
+  \@tmpstrctr=\@strctr
+  \divide\@strctr by 10\relax
+  \@FCmodulo{\@tmpstrctr}{10}%
+  \let\@@fc@ordstr#2\relax
+  \ifnum\@tmpstrctr=0\relax
+    \edef#2{\@@fc@ordstr\@tenthstring{\@strctr}}%
+  \else
+    \edef#2{\@@fc@ordstr\@tenstring{\@strctr}}%
+  \fi
+  \@strctr=#1\relax \@FCmodulo{\@strctr}{10}%
+  \ifnum\@strctr>0\relax
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr-\@unitthstring{\@strctr}}%
+  \fi
+\else
+  \ifnum\@strctr<10\relax
+    \ifnum\@strctr=0\relax
+      \ifnum#1<100\relax
+        \let\@@fc@ordstr#2\relax
+        \edef#2{\@@fc@ordstr\@unitthstring{\@strctr}}%
+      \fi
+    \else
+      \let\@@fc@ordstr#2\relax
+      \edef#2{\@@fc@ordstr\@unitthstring{\@strctr}}%
+    \fi
+  \else
+    \@FCmodulo{\@strctr}{10}%
+    \let\@@fc@ordstr#2\relax
+    \edef#2{\@@fc@ordstr\@teenthstring{\@strctr}}%
+  \fi
+\fi
+}%
+\global\let\@@ordinalstringesperanto\@@ordinalstringesperanto
+%    \end{macrocode}
+% All lower case version. Again, the second argument must be a
+% control sequence in which the resulting text is stored.
+%    \begin{macrocode}
+\newcommand*{\@ordinalstringMesperanto}[2]{%
+  \let\@unitthstring=\@@unitthstringesperanto
+  \let\@teenthstring=\@@teenthstringesperanto
+  \let\@tenthstring=\@@tenthstringesperanto
+  \let\@unitstring=\@@unitstringesperanto
+  \let\@teenstring=\@@teenstringesperanto
+  \let\@tenstring=\@@tenstringesperanto
+  \def\@andname{kaj}%
+  \def\@hundred{cent}\def\@thousand{mil}%
+  \def\@hundredth{centa}\def\@thousandth{mila}%
+  \@@ordinalstringesperanto{#1}{#2}%
+}%
+\global\let\@ordinalstringMesperanto\@ordinalstringMesperanto
+%    \end{macrocode}
+% No gender in Esperanto, so make feminine and neuter same as
+% masculine:
+%    \begin{macrocode}
+\global\let\@ordinalstringFesperanto=\@ordinalstringMesperanto
+\global\let\@ordinalstringNesperanto=\@ordinalstringMesperanto
+%    \end{macrocode}
+% First letter of each word in upper case:
+%    \begin{macrocode}
+\newcommand*{\@OrdinalstringMesperanto}[2]{%
+  \let\@unitthstring=\@@Unitthstringesperanto
+  \let\@teenthstring=\@@Teenthstringesperanto
+  \let\@tenthstring=\@@Tenthstringesperanto
+  \let\@unitstring=\@@Unitstringesperanto
+  \let\@teenstring=\@@Teenstringesperanto
+  \let\@tenstring=\@@Tenstringesperanto
+  \def\@andname{kaj}%
+  \def\@hundred{Cent}\def\@thousand{Mil}%
+  \def\@hundredth{Centa}\def\@thousandth{Mila}%
+  \@@ordinalstringesperanto{#1}{#2}%
+}%
+\global\let\@OrdinalstringMesperanto\@OrdinalstringMesperanto
+%    \end{macrocode}
+% No gender in Esperanto, so make feminine and neuter same as
+% masculine:
+%    \begin{macrocode}
+\global\let\@OrdinalstringFesperanto=\@OrdinalstringMesperanto
+\global\let\@OrdinalstringNesperanto=\@OrdinalstringMesperanto
+%    \end{macrocode}
+\iffalse Local variables: \fi
+\iffalse mode: docTeX     \fi
+\iffalse End:             \fi
