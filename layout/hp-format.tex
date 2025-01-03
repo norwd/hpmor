@@ -110,6 +110,25 @@
 \widowpenalty 10000
 \clubpenalty 10000
 
+% Fake Esperanto NUMBERstring support in fmtcount
+
+% Switch implementation - https://tex.stackexchange.com/a/187710
+\usepackage{xifthen}
+\newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
+\newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
+\newenvironment{switch}[1]{\renewcommand{\case}{\ifequals{#1}}}{}
+
+% Example: Pick color by ID
+\newcommand{\NUMEROcxeno}[2]{
+    \begin{switch}{#1}
+        \case{1}{unu}
+        \case{2}{du}
+        \case{3}{tri}
+        \case{4}{KVAR}
+        #2
+    \end{switch}
+}
+
 % Various packages used
 \usepackage[normalem]{ulem}
 \usepackage{xfrac}
