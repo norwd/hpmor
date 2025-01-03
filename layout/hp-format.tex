@@ -110,53 +110,24 @@
 \widowpenalty 10000
 \clubpenalty 10000
 
-% Switch implementation - https://tex.stackexchange.com/a/187710
-\usepackage{xifthen}
-\newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
-\newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
-\newenvironment{switch}[1]{\renewcommand{\case}{\ifequals{#1}}}{}
-
 % For modulo operation
 \usepackage{intcalc}
 
 % Fake Esperanto NUMBERstring support in fmtcount
-\renewcommand{\NUMBERstring}[2]{
-    \begin{switch}{\intcalcMod{#1}{100}}
-        \case{1}{CENT}
-        \case{2}{DUCENT}
-        \case{3}{TRICENT}
-        \case{4}{KVARCENT}
-        \case{5}{KVINCENT}
-        \case{6}{SESCENT}
-        \case{7}{SEPCENT}
-        \case{8}{OKCENT}
-        \case{9}{NAŬCENT}
-        #2
-    \end{switch}
-    \begin{switch}{\intcalcMod{#1}{10}}
-        \case{1}{DEK}
-        \case{2}{DUDEK}
-        \case{3}{TRIDEK}
-        \case{4}{KVARDEK}
-        \case{5}{KVINDEK}
-        \case{6}{SESDEK}
-        \case{7}{SEPDEK}
-        \case{8}{OKDEK}
-        \case{9}{NAŬDEK}
-        #2
-    \end{switch}
-    \begin{switch}{#1}
-        \case{1}{UNU}
-        \case{2}{DU}
-        \case{3}{TRI}
-        \case{4}{KVAR}
-        \case{5}{KVIN}
-        \case{6}{SES}
-        \case{7}{SEP}
-        \case{8}{OK}
-        \case{9}{NAŬ}
-        #2
-    \end{switch}
+% https://tex.stackexchange.com/a/578200
+\newcommand{\NUMBERstring}[1]{%
+\ifcase#1\relax NUL % Case 0.
+\or UNU % Case 1.
+\or DU % Case 2.
+\or TRI % Case 3.
+\or KVAR % Case 4.
+\or KVIN % Case 5.
+\or SES % Case 6.
+\or SEP % Case 7.
+\or OK % Case 8.
+\or NAŬ % Case 9.
+\else #1 % Default case.
+\fi
 }
 
 % Various packages used
