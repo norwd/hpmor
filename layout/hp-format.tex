@@ -116,7 +116,7 @@
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstringnum}[1]{%
-\ifcase#1\relax NUL % Case 0.
+\ifcase\intcalcMod{#1}{10}\relax % Case 0.
 \or UNU % Case 1.
 \or DU % Case 2.
 \or TRI % Case 3.
@@ -126,7 +126,6 @@
 \or SEP % Case 7.
 \or OK % Case 8.
 \or NAŬ % Case 9.
-\else #1 % Default case.
 \fi
 }
 
