@@ -116,13 +116,9 @@
 % For floor operation
 \usepackage{xintfrac}
 
-% For hyphenation
-\usepackage{xstring}
-
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstringnum}[1]{%
-\lhead{\textsc{\ignorespaces\StrSubstitute{%
 \ifcase\xintFloor{\intcalcMod{#1}{100}/10}\relax% Case 0.
 \or DEK% Case 1.
 \or DUDEK% Case 2.
@@ -145,7 +141,6 @@
 \or OK% Case 8.
 \or NAŬ% Case 9.
 \fi%
-}{ }{\(\nobreakdash-\)}}}%
 }
 
 % Various packages used
