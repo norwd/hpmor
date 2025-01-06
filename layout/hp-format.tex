@@ -116,31 +116,36 @@
 % For floor operation
 \usepackage{xintfrac}
 
+% For hyphenation
+\usepackage{xstring}
+
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstringnum}[1]{%
-\ifcase\xintFloor{\intcalcMod{#1}{100}/10}\relax % Case 0.
-\or DEK % Case 1.
-\or DUDEK % Case 2.
-\or TRIDEK % Case 3.
-\or KVARDEK % Case 4.
-\or KVINDEK % Case 5.
-\or SESDEK % Case 6.
-\or SEPDEK % Case 7.
-\or OKDEK % Case 8.
-\or NAŬDEK % Case 9.
-\fi %
-\ifcase\intcalcMod{#1}{10}\relax % Case 0.
-\or UNU % Case 1.
-\or DU % Case 2.
-\or TRI % Case 3.
-\or KVAR % Case 4.
-\or KVIN % Case 5.
-\or SES % Case 6.
-\or SEP % Case 7.
-\or OK % Case 8.
-\or NAŬ % Case 9.
-\fi
+\lhead{\textsc{\ignorespaces\StrSubstitute{%
+\ifcase\xintFloor{\intcalcMod{#1}{100}/10}\relax% Case 0.
+\or DEK% Case 1.
+\or DUDEK% Case 2.
+\or TRIDEK% Case 3.
+\or KVARDEK% Case 4.
+\or KVINDEK% Case 5.
+\or SESDEK% Case 6.
+\or SEPDEK% Case 7.
+\or OKDEK% Case 8.
+\or NAŬDEK% Case 9.
+\fi%
+\ifcase\intcalcMod{#1}{10}\relax% Case 0.
+\or UNU% Case 1.
+\or DU% Case 2.
+\or TRI% Case 3.
+\or KVAR% Case 4.
+\or KVIN% Case 5.
+\or SES% Case 6.
+\or SEP% Case 7.
+\or OK% Case 8.
+\or NAŬ% Case 9.
+\fi%
+}{ }{\(\nobreakdash-\)}}}%
 }
 
 % Various packages used
