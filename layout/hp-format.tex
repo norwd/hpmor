@@ -116,7 +116,7 @@
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstringnum}[1]{%
-\ifcase\intcalcMod{\numexpr #1/10\relax}{10}\relax % Case 0.
+\ifcase\numexpr \intcalcMod{#1}{100} / 10 \relax % Case 0.
 \or DEK % Case 1.
 \or DUDEK % Case 2.
 \or TRIDEK % Case 3.
