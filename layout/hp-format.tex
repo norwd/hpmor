@@ -118,9 +118,7 @@
 \usepackage{trimspaces}
 
 \makeatletter
-\newcommand*{\trim}[1]{%
-  \trim@spaces@noexp{#1}%
-}
+\newcommand*{\trim}[1]{\trim@spaces{#1}}
 \makeatother
 
 % Fake Esperanto NUMBERstring support in fmtcount
