@@ -113,14 +113,13 @@
 % For modulo and integer division operations
 \usepackage{intcalc}
 
-% Non-package way of trimming whitespace
-% https://tex.stackexchange.com/a/655316
+% For trimming whitespace
+% https://tex.stackexchange.com/a/484290
+\usepackage{trimspaces}
+
 \makeatletter
-\long\gdef\@calc@trim< #1 >\@/< #2 >\@/< #3 >\@/< #4 >\@/< #5 >\@/< #6 >\@/< #7 >\@/< #8 >\@/< #9 >\@nihil{%
-    \ifcase\numexpr2#3#8\relax\or#2\or#7\or#5\or#1\or#1\fi%
-}
-\long\gdef\trim#1{%
-    \@calc@trim< #1 >\@/< #1>\@/< - >\@/< + >\@/< ? >\@/<#1 >\@/<#1>\@/< 0 >\@/< 2 >\@/< 1 >\@/< 3 >\@/< 2 >\@/< ! >\@nihil%
+\newcommand*{\trim}[1]{%
+  \trim@spaces@noexp{#1}%
 }
 \makeatother
 
