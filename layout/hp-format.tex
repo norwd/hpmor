@@ -129,6 +129,7 @@
 \or SEPMIL% Case 7.
 \or OKMIL% Case 8.
 \or NAŬMIL% Case 9.
+\else\relax%
 \fi%
 \ifcase\xintFloor{\intcalcMod{#1}{1000}/100}\relax\relax% Case 0.
 \or CENT% Case 1.
@@ -140,6 +141,7 @@
 \or SEPCENT% Case 7.
 \or OKCENT% Case 8.
 \or NAŬCENT% Case 9.
+\else\relax%
 \fi%
 \ifcase\xintFloor{\intcalcMod{#1}{100}/10}\relax\relax% Case 0.
 \or DEK% Case 1.
@@ -151,6 +153,7 @@
 \or SEPDEK% Case 7.
 \or OKDEK% Case 8.
 \or NAŬDEK% Case 9.
+\else\relax%
 \fi%
 \ifcase\intcalcMod{#1}{10}\relax% Case 0.
 \or UNU% Case 1.
@@ -162,6 +165,7 @@
 \or SEP% Case 7.
 \or OK% Case 8.
 \or NAŬ% Case 9.
+\else\relax%
 \fi%
 }
 
