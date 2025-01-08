@@ -119,7 +119,7 @@
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstringnum}[1]{%
-\ifcase\xintFloor{\intcalcMod{#1}{10000}/1000}\relax% Case 0.
+\ifcase\xintFloor{\intcalcMod{#1}{10000}/1000}\relax\relax% Case 0.
 \or MIL% Case 1.
 \or DUMIL% Case 2.
 \or TRIMIL% Case 3.
@@ -130,7 +130,7 @@
 \or OKMIL% Case 8.
 \or NAŬMIL% Case 9.
 \fi%
-\ifcase\xintFloor{\intcalcMod{#1}{1000}/100}\relax% Case 0.
+\ifcase\xintFloor{\intcalcMod{#1}{1000}/100}\relax\relax% Case 0.
 \or CENT% Case 1.
 \or DUCENT% Case 2.
 \or TRICENT% Case 3.
@@ -141,7 +141,7 @@
 \or OKCENT% Case 8.
 \or NAŬCENT% Case 9.
 \fi%
-\ifcase\xintFloor{\intcalcMod{#1}{100}/10}\relax% Case 0.
+\ifcase\xintFloor{\intcalcMod{#1}{100}/10}\relax\relax% Case 0.
 \or DEK% Case 1.
 \or DUDEK% Case 2.
 \or TRIDEK% Case 3.
