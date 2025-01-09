@@ -121,6 +121,10 @@
 \newcommand*{\trim}[1]{\trim@spaces{#1}}
 \makeatother
 
+\begingroup
+  \def\\{\global\let\implicitSpace= }\\ % cf. TeXbook exercise 24.6
+\endgroup
+
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstring}[1]{\NUMBERstringnum{\the\value{#1}}}
