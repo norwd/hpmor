@@ -120,7 +120,7 @@
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstring}[1]{\NUMBERstringnum{\the\value{#1}}}
-\renewcommand{\NUMBERstringnum}[1]{\trim{%
+\renewcommand{\NUMBERstringnum}[1]{%
 \ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax% Case 0.
 \or MIL% Case 1.
 \or DUMIL% Case 2.
@@ -165,7 +165,7 @@
 \or OK% Case 8.
 \or NAŬ% Case 9.
 \fi%
-}}
+}
 
 \trim@spaces@in\NUMBERstringnum\relax
 
