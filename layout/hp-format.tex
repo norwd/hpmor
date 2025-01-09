@@ -116,10 +116,10 @@
 % For string replace operation
 \usepackage{xstring}
 
-\def\ReplaceDoubleHyphen#1{%
-  \IfSubStr{#1}{-{}-}{%
-    \ReplaceDoubleHyphen{%
-      \StrSubstitute{#1}{-{}-}{-}%
+\def\ReplaceDoubleSpaces#1{%
+  \IfSubStr{#1}{\ \ }{%
+    \ReplaceDoubleSpaces{%
+      \StrSubstitute{#1}{\ \ }{ }%
     }%
   }{#1}%
 }
@@ -127,8 +127,8 @@
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstring}[1]{\NUMBERstringnum{\the\value{#1}}}
-\renewcommand{\NUMBERstringnum}[1]{\ReplaceDoubleHyphen{%
--\relax%
+\renewcommand{\NUMBERstringnum}[1]{\ReplaceDoubleSpaces{%
+\ \relax%
 \ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax% Case 0.
 \or MIL% Case 1.
 \or DUMIL% Case 2.
@@ -140,7 +140,7 @@
 \or OKMIL% Case 8.
 \or NAŬMIL% Case 9.
 \fi%
--\relax%
+\ \relax%
 \ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\relax% Case 0.
 \or CENT% Case 1.
 \or DUCENT% Case 2.
@@ -152,7 +152,7 @@
 \or OKCENT% Case 8.
 \or NAŬCENT% Case 9.
 \fi%
--\relax%
+\ \relax%
 \ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax% Case 0.
 \or DEK% Case 1.
 \or DUDEK% Case 2.
@@ -164,7 +164,7 @@
 \or OKDEK% Case 8.
 \or NAŬDEK% Case 9.
 \fi%
--\relax%
+\ \relax%
 \ifcase\intcalcMod{#1}{10}\relax% Case 0.
 \or UNU% Case 1.
 \or DU% Case 2.
