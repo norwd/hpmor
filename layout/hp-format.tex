@@ -117,11 +117,11 @@
 \usepackage{xstring}
 
 \def\ReplaceDoubleSpaces#1{%
-  \IfSubStr{#1}{\ \ }{%
-    \ReplaceDoubleSpaces{%
-      \StrSubstitute{#1}{\ \ }{ }%
-    }%
-  }{#1}%
+%\IfSubStr{#1}{\ \ }{%
+%\ReplaceDoubleSpaces{%
+\StrSubstitute{#1}{\ \ }{ }%
+%}%
+%}{#1}%
 }
 
 % Fake Esperanto NUMBERstring support in fmtcount
