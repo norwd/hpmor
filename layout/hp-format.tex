@@ -118,9 +118,9 @@
 
 \def\ReplaceDoubleHyphen#1{%
   \IfSubStr{#1}{--}{%
-    %\ReplaceDoubleHyphen{
+    \ReplaceDoubleHyphen{%
     \StrSubstitute{#1}{--}{-}}{#1}}
-    %}
+    }%
 
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
