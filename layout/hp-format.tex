@@ -113,10 +113,6 @@
 % For modulo and integer division operations
 \usepackage{intcalc}
 
-% For trimming whitespace
-% https://tex.stackexchange.com/a/484290
-\usepackage{trimspaces}
-
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstring}[1]{\NUMBERstringnum{\the\value{#1}}}
@@ -131,7 +127,8 @@
 \or SEPMIL% Case 7.
 \or OKMIL% Case 8.
 \or NAŬMIL% Case 9.
-\fi ~%
+\fi%
+\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\relax\or ~ \fi\fi%
 \ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\relax% Case 0.
 \or CENT% Case 1.
 \or DUCENT% Case 2.
@@ -142,7 +139,8 @@
 \or SEPCENT% Case 7.
 \or OKCENT% Case 8.
 \or NAŬCENT% Case 9.
-\fi ~%
+\fi%
+\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax\or ~ \fi\fi%
 \ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax% Case 0.
 \or DEK% Case 1.
 \or DUDEK% Case 2.
@@ -153,7 +151,8 @@
 \or SEPDEK% Case 7.
 \or OKDEK% Case 8.
 \or NAŬDEK% Case 9.
-\fi ~%
+\fi%
+\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\ifcase\intcalcMod{#1}{10}\relax\or ~ \fi\fi%
 \ifcase\intcalcMod{#1}{10}\relax% Case 0.
 \or UNU% Case 1.
 \or DU% Case 2.
@@ -166,8 +165,6 @@
 \or NAŬ% Case 9.
 \fi%
 }
-
-\trim@spaces@in{\NUMBERstringnum}
 
 % Various packages used
 \usepackage[normalem]{ulem}
