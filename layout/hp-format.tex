@@ -118,7 +118,13 @@
 \usepackage{trimspaces}
 
 \makeatletter
-\newcommand*{\trim}[1]{\trim@spaces{#1}}
+\newcommand*{\trim}[1]{%
+  \begingroup
+    \edef\my@tmp@trimmed{\trim@spaces@noexp{#1}}%
+    \expandafter
+  \endgroup
+  \my@tmp@trimmed
+}
 \makeatother
 
 \begingroup
