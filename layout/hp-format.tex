@@ -113,10 +113,20 @@
 % For modulo and integer division operations
 \usepackage{intcalc}
 
+% For string replace operation
+\usepackage{xstring}
+
+\def\ReplaceDoubleHyphen#1{%
+  \IfSubStr{#1}{--}{%
+    %\ReplaceDoubleHyphen{
+    \StrSubstitute{#1}{--}{-}}{#1}}
+    %}
+
 % Fake Esperanto NUMBERstring support in fmtcount
 % https://tex.stackexchange.com/a/578200
 \renewcommand{\NUMBERstring}[1]{\NUMBERstringnum{\the\value{#1}}}
-\renewcommand{\NUMBERstringnum}[1]{%
+\renewcommand{\NUMBERstringnum}[1]{\ReplaceDoubleHyphen{%
+-\relax%
 \ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax% Case 0.
 \or MIL% Case 1.
 \or DUMIL% Case 2.
@@ -128,7 +138,7 @@
 \or OKMIL% Case 8.
 \or NAŬMIL% Case 9.
 \fi%
-\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\relax\else ~ \fi\fi%
+-\relax%
 \ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\relax% Case 0.
 \or CENT% Case 1.
 \or DUCENT% Case 2.
@@ -140,7 +150,7 @@
 \or OKCENT% Case 8.
 \or NAŬCENT% Case 9.
 \fi%
-\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax\else ~ \fi\fi%
+-\relax%
 \ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax% Case 0.
 \or DEK% Case 1.
 \or DUDEK% Case 2.
@@ -152,7 +162,7 @@
 \or OKDEK% Case 8.
 \or NAŬDEK% Case 9.
 \fi%
-\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\ifcase\intcalcMod{#1}{10}\relax\else ~ \fi\fi%
+-\relax%
 \ifcase\intcalcMod{#1}{10}\relax% Case 0.
 \or UNU% Case 1.
 \or DU% Case 2.
@@ -164,7 +174,7 @@
 \or OK% Case 8.
 \or NAŬ% Case 9.
 \fi%
-}
+}}
 
 % Various packages used
 \usepackage[normalem]{ulem}
