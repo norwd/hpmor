@@ -144,8 +144,8 @@
 \or OKCENT% Case 8.
 \or NAŬCENT% Case 9.
 \fi%
-\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax% Case 0.
-\else\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax% Case 0.
+\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax%
+\else\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax%
 \else\ %
 \fi%
 \else\ %
@@ -162,12 +162,13 @@
 \or OKDEK% Case 8.
 \or NAŬDEK% Case 9.
 \fi%
-\ifcase\intcalcMod{#1}{10}\relax% Case 0.
-\else\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax% Case 0.
+\ifcase\intcalcMod{#1}{10}\relax%
+\else\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax%
 \else\ %
 \fi%
 \else\ %
 \fi%
+\else\ %
 \fi%
 \fi%
 \ifcase\intcalcMod{#1}{10}\relax% Case 0.
