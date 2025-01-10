@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   kunmetu:
-    name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
+    name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
     runs-on: ubuntu-latest
     steps:
 
@@ -37,8 +37,7 @@ jobs:
           diff -u hpmor-prev.html hpmor.html > hpmor-html-diff.log || :
           rm hpmor-prev.html
 
-      - if: github.ref_name == 'esperantigo/unua-provo'
-        uses: softprops/action-gh-release@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: bitlibrojn
           retention-days: 14
@@ -49,7 +48,8 @@ jobs:
             ./hpmor.fb2
             ./hpmor.html
 
-      - uses: softprops/action-gh-release@v2
+      - if: github.ref_name == 'esperantigo/unua-provo'
+        uses: softprops/action-gh-release@v2
         with:
           name: "Laboro en Progreso"
           body: "Ĉi tiu eldono estas laboro en progreso."
