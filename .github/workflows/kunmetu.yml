@@ -37,7 +37,8 @@ jobs:
           diff -u hpmor-prev.html hpmor.html > hpmor-html-diff.log || :
           rm hpmor-prev.html
 
-      - uses: actions/upload-artifact@v4
+      - id: upload-artifact
+        uses: actions/upload-artifact@v4
         with:
           name: bitlibrojn
           retention-days: 14
@@ -47,6 +48,10 @@ jobs:
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
+
+      - run: echo "ARTIFACT_URL=${ARTIFACT_URL}" | tee -a "$GITHUB_ENV" | tee -a "${GITHUB_STEP_SUMMARY}"
+        env:
+          ARTIFACT_URL: ${{ steps.upload-artifact.outputs.artifact-url }}
 
       - if: github.ref_name == 'esperantigo/unua-provo'
         uses: softprops/action-gh-release@v2
