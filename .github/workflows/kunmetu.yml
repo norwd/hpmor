@@ -1,5 +1,5 @@
-name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
-run-name: "Kunmetu HPMOR PDF-dosierojn kaj Bitlibrojn"
+name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
+run-name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
 
 on:
   push:
@@ -11,26 +11,13 @@ concurrency:
 
 jobs:
   kunmetu:
-    name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
+    name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
     runs-on: ubuntu-latest
     steps:
 
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - uses: actions/cache@v4
-        with:
-          key: ${{ github.workflow_ref }}-kaŝmemoro
-          path: |
-            **/*.aux
-            **/*.aux
-            **/*.fdb_latexmk
-            **/*.fls
-            **/*.out
-            **/*.pdf
-            **/*.toc
-            **/*.xdv
 
       - run: touch requirements.txt
 
@@ -50,7 +37,8 @@ jobs:
           diff -u hpmor-prev.html hpmor.html > hpmor-html-diff.log || :
           rm hpmor-prev.html
 
-      - uses: actions/upload-artifact@v4
+      - id: upload-artifact
+        uses: actions/upload-artifact@v4
         with:
           name: bitlibrojn
           retention-days: 14
@@ -61,7 +49,12 @@ jobs:
             ./hpmor.fb2
             ./hpmor.html
 
-      - uses: softprops/action-gh-release@v2
+      - run: echo "ARTIFACT_URL=${ARTIFACT_URL}" | tee -a "$GITHUB_ENV" | tee -a "${GITHUB_STEP_SUMMARY}"
+        env:
+          ARTIFACT_URL: ${{ steps.upload-artifact.outputs.artifact-url }}
+
+      - if: github.ref_name == 'esperantigo/unua-provo'
+        uses: softprops/action-gh-release@v2
         with:
           name: "Laboro en Progreso"
           body: "Ĉi tiu eldono estas laboro en progreso."

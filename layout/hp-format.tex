@@ -110,6 +110,80 @@
 \widowpenalty 10000
 \clubpenalty 10000
 
+% For modulo and integer division operations
+\usepackage{intcalc}
+
+% Fake Esperanto NUMBERstring support in fmtcount
+% https://tex.stackexchange.com/a/578200
+\renewcommand{\NUMBERstring}[1]{\NUMBERstringnum{\the\value{#1}}}
+\renewcommand{\NUMBERstringnum}[1]{%
+\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax% Case 0.
+\or MIL% Case 1.
+\or DUMIL% Case 2.
+\or TRIMIL% Case 3.
+\or KVARMIL% Case 4.
+\or KVINMIL% Case 5.
+\or SESMIL% Case 6.
+\or SEPMIL% Case 7.
+\or OKMIL% Case 8.
+\or NAŬMIL% Case 9.
+\fi%
+\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\relax%
+\else\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax%
+\else\ %
+\fi%
+\fi%
+\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\relax% Case 0.
+\or CENT% Case 1.
+\or DUCENT% Case 2.
+\or TRICENT% Case 3.
+\or KVARCENT% Case 4.
+\or KVINCENT% Case 5.
+\or SESCENT% Case 6.
+\or SEPCENT% Case 7.
+\or OKCENT% Case 8.
+\or NAŬCENT% Case 9.
+\fi%
+\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax%
+\else\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax%
+\else\ %
+\fi%
+\else\ %
+\fi%
+\fi%
+\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\relax% Case 0.
+\or DEK% Case 1.
+\or DUDEK% Case 2.
+\or TRIDEK% Case 3.
+\or KVARDEK% Case 4.
+\or KVINDEK% Case 5.
+\or SESDEK% Case 6.
+\or SEPDEK% Case 7.
+\or OKDEK% Case 8.
+\or NAŬDEK% Case 9.
+\fi%
+\ifcase\intcalcMod{#1}{10}\relax%
+\else\ifcase\intcalcDiv{\intcalcMod{#1}{100}}{10}\ifcase\intcalcDiv{\intcalcMod{#1}{1000}}{100}\ifcase\intcalcDiv{\intcalcMod{#1}{10000}}{1000}\relax%
+\else\ %
+\fi%
+\else\ %
+\fi%
+\else\ %
+\fi%
+\fi%
+\ifcase\intcalcMod{#1}{10}\relax% Case 0.
+\or UNU% Case 1.
+\or DU% Case 2.
+\or TRI% Case 3.
+\or KVAR% Case 4.
+\or KVIN% Case 5.
+\or SES% Case 6.
+\or SEP% Case 7.
+\or OK% Case 8.
+\or NAŬ% Case 9.
+\fi%
+}
+
 % Various packages used
 \usepackage[normalem]{ulem}
 \usepackage{xfrac}
@@ -120,3 +194,4 @@
 \usepackage{gitinfo2}
 \usepackage{hyphenat}
 \usepackage{comment}
+\usepackage{hyphenat}
