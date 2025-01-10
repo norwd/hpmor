@@ -1,5 +1,5 @@
-name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
-run-name: "Kunmetu HPMOR PDF-dosierojn kaj Bitlibrojn"
+name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
+run-name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
 
 on:
   push:
