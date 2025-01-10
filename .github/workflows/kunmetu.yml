@@ -1,5 +1,5 @@
-name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
-run-name: "Kunmetu HPMOR PDF-dosierojn kaj Bitlibrojn"
+name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
+run-name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
 
 on:
   push:
@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   kunmetu:
-    name: "Kunmetu HPMOR-aj PDF-dosierojn kaj Bitlibrojn"
+    name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
     runs-on: ubuntu-latest
     steps:
 
@@ -53,7 +53,8 @@ jobs:
         env:
           ARTIFACT_URL: ${{ steps.upload-artifact.outputs.artifact-url }}
 
-      - uses: softprops/action-gh-release@v2
+      - if: github.ref_name == 'esperantigo/unua-provo'
+        uses: softprops/action-gh-release@v2
         with:
           name: "Laboro en Progreso"
           body: "Ĉi tiu eldono estas laboro en progreso."
