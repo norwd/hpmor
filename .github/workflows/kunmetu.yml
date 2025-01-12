@@ -27,7 +27,7 @@ jobs:
 
       - run: wget --quiet "${URL}" -O hpmor-prev.html
         env:
-          URL: https://github.com/${{ github.repository }}/releases/tag/LaboroEnProgreso/hpmor.html
+          URL: https://github.com/${{ github.repository }}/releases/download/LaboroEnProgreso/hpmor.html
 
       - run: sh scripts/install_requirements.sh
       - run: sh scripts/make_pdfs.sh
