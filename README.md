@@ -1,15 +1,23 @@
+<html lang="eo">
+
 # Hari Potr kaj la Metodoj de Racionaleco
 
 <!-- Por angligi, uzu tiun ĉi ŝablonon:
-<details>
-<summary>Click to read this section in English</summary>
-...
+<details lang="en-GB">
+<summary><i>Click to read this section in English</i></summary>
+<blockquote>
+
+[[ENGLISH TEXT HERE (yes the gaps are important!!!)]]
+
+</blockquote>
 </details>
 -->
 
-<details>
-<summary>Click to read this section in English</summary>
-<emph>Harry Potter and the Methods Of Rationality</emph>
+<details lang="en-GB">
+<summary><i>Click to read this section in English</i></summary>
+<blockquote>
+
+***Harry Potter and the Methods Of Rationality***
 
 Forked from
 <https://github.com/rrthomas/hpmor>
@@ -32,11 +40,17 @@ single-file PDF. Those chapter numbers are omitted in the text, so chapter
 chapters are renumbered to start from 1 at the start of a book, and there are
 no appendices. Some epigraphs have been omitted but are in the source files
 of the chapters.
+
+</blockquote>
 </details>
 
 Prizorgita de Ruben Tomas, kaj tradukita de J. Mejer-Norŭud.
 
-Ĉi tio estas LaTeX-a versio de [la popular didaktika fanfikcio](http://www.hpmor.com) de Eliezer Yudkowsky, kiu povas fariĝi bitlibrojn en multaj formatoj[^subtenataj-formatoj], aŭ ses volumojn kiujn oni povas presi kaj bindi. Ankaŭ estas polvkovriloj por la preseblaj volumoj.
+Ĉi tio estas [LaTeX]-a versio de [la popular didaktika fanfikcio](http://www.hpmor.com) de Eliezer Judkaŭski,
+kiu povas fariĝi bitlibrojn en multaj formatoj[^subtenataj-formatoj],
+aŭ ses volumojn kiujn oni povas presi kaj bindi.
+Ankaŭ estas polvkovriloj por la preseblaj volumoj.
+
 
 [^subtenataj-formatoj]: Subtenataj formatoj estas PDF, ePub kaj Mobi.
 
@@ -44,15 +58,18 @@ Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por el�
 
 Por kunmeti la libron, oni bezonas [TeXLive] (2015-a aŭ pli freŝa) kaj [git]. (Rimarku: la libro devas esti kunmetita de gitversikontrola elpreno)
 
-[TeXLive]: https://www.tug.org/texlive
-[git]: https://git-scm.com
-
 Rimarku: la bonusaĵoj (angle "Omake Files", t.e. ĉapitroj 11 kaj 64) estas movitaj al la fino de la ununura-dosiera PDF-o.
 Tiuj ĉapitraj nomeroj estas ellasitaj en le teksto, do ĉapitro 10 estas sekvata de ĉapitro 12, eksemple.
 En la ses-volumoj PDF-oj, ĉiuj ĉapitroj estas renumeritaj el 1 ĉe la komenco de la volumo, kaj ne estas apendicoj.
 Iom da epigrafoj estas ellasitaj sed resti en la font-dosieroj de la ĉapitroj.
 
-## Files
+## Dosieroj
+
+<details lang="en-GB">
+<summary><i>Click to read this section in English</i></summary>
+<blockquote>
+
+***Files***
 
 * `hpmor.tex` - the main file
 * `layout/hp-format.tex` - mostly sets up memoir
@@ -67,6 +84,19 @@ Iom da epigrafoj estas ellasitaj sed resti en la font-dosieroj de la ĉapitroj.
   does the same as `latexmk` (see below), which may be useful for editor
   integration (e.g. Emacs).
 * `scripts/ebook/` - e-book generation scripts
+
+</blockquote>
+</details>
+
+* `hpmor.tex` - la ĉefa dosiero
+* `layout/hp-format.tex` - plejparte agordas [memoir]
+* `layout/hp-markup.tex` - logikaj markadaj komandoj uzataj en la teksto
+* `chapters/` - unu dosiero po ĉapitro, inkluzataj en `hpmor.tex` kaj la unuopaj volumoj `hpmor-N.tex`.
+* `spelling-list.txt` - listo de vortoj uzataj por literumkorekti la libron.
+* `fonts/` - diversaj tiparoj uzataj
+* `latexmkrc` - agordas [latexmk] por konstrui la PDF-ojn per [LaTeX].
+* `GNUMakefile` - enhavas celojn por fari Zip de la PDF-oj kaj eldoni ilin al GitHub. (Plejparte interesas projektajn prizorgantojn.) `make all` faras la samon kiel `latexmk` (vidu malsupre), kio povas esti utila por redaktila integriĝo (ekz. Emakso).
+* `scripts/ebook/` - bitlibrgeneraciaj skriptoj
 
 ## Building the book(s)
 
@@ -224,6 +254,12 @@ translations of this edition.
 * [French](https://github.com/yeKcim/hpmor) (complete)
 * [German](https://github.com/entorb/hpmor-de) (complete)
 
+[LaTeX]: https://www.latex-project.org
+[TeXLive]: https://www.tug.org/texlive
+[git]: https://git-scm.com
+[memoir]: https://ctan.org/pkg/memoir
+[latexmk]: https://ctan.org/pkg/latexmk
+
 <!--  LocalWords:  hpmor tex hp txt latexmkrc latexmk GNUMakefile 80gsm '
  -->
 <!--  LocalWords:  norc nocover N' NNN chapterfile FILENAME' Britfixing dir
@@ -232,3 +268,5 @@ translations of this edition.
  -->
 <!--  LocalWords:  textsc
  -->
+
+ </html>
