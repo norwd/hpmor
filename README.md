@@ -1,4 +1,4 @@
-<html lang="eo">
+<article lang="eo">
 
 # Hari Potr kaj la Metodoj de Racionaleco
 
@@ -269,4 +269,4 @@ translations of this edition.
 <!--  LocalWords:  textsc
  -->
 
- </html>
+ </article>
