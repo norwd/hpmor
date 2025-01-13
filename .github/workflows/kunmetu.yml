@@ -33,7 +33,7 @@ jobs:
       - run: sh scripts/make_pdfs.sh
       - run: sh scripts/make_ebooks.sh
 
-      - run: diff -u hpmor-prev.html hpmor.html | tee hpmor-html-diff.log
+      - run: diff -u -s hpmor-prev.html hpmor.html | tee hpmor-html-diff.log
       - run: rm hpmor-prev.html
 
       - id: upload-artifact
