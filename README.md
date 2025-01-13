@@ -46,7 +46,7 @@ of the chapters.
 
 Prizorgita de Ruben Tomas, kaj tradukita de J. Mejer-Norŭud.
 
-Ĉi tio estas [LaTeX]-a versio de [la popular didaktika fanfikcio](http://www.hpmor.com) de Eliezer Judkaŭski,
+Ĉi tio estas [LaTeX]-a versio de [la popular didaktika fanfikcio][HPMOR] de Eliezer Judkaŭski,
 kiu povas fariĝi bitlibrojn en multaj formatoj[^subtenataj-formatoj],
 aŭ ses volumojn kiujn oni povas presi kaj bindi.
 Ankaŭ estas polvkovriloj por la preseblaj volumoj.
@@ -290,11 +290,28 @@ translations of this edition.
 </blockquote>
 </details>
 
+Por traduki la libron, oni rekomendas projektforki ĉi tiun deponejon, kaj rerigardi de tempo al tempo por ĝisdatigoj. Ankaŭ, bonvolu sugesti ŝanĝojn kontraŭ ĉi tiu dosiero por aldoni pliajn tradukojn!
+
+Oni rekomendas uzi [polyglossia] (anstataŭ [babel]), sed [babel] funkcias pli bone por Esperantigado.
+
+### Konataj tradukoj
+
+Rimarku: ekzistas aliaj tradukoj de [HPMOR], jen estas listigataj nur tradukoj de tiu ĉi eldono.
+
+* [Angla](https://github.com/rrthomas/hpmor) (originala)
+* [Franca](https://github.com/yeKcim/hpmor) (kompleta)
+* [Germana](https://github.com/entorb/hpmor-de) (kompleta)
+
+<!-- Ligilaro / Links -->
+[HPMOR]: http://www.hpmor.com
 [LaTeX]: https://www.latex-project.org
 [TeXLive]: https://www.tug.org/texlive
 [git]: https://git-scm.com
 [memoir]: https://ctan.org/pkg/memoir
 [latexmk]: https://ctan.org/pkg/latexmk
+[polyglossia]: https://ctan.org/pkg/polyglossia
+[babel]: https://ctan.org/pkg/babel
+[babel-esperanto]: https://ctan.org/pkg/babel-esperanto
 
 <!--  LocalWords:  hpmor tex hp txt latexmkrc latexmk GNUMakefile 80gsm '
  -->
