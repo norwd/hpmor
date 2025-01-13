@@ -98,7 +98,13 @@ Iom da epigrafoj estas ellasitaj sed resti en la font-dosieroj de la ĉapitroj.
 * `GNUMakefile` - enhavas celojn por fari Zip de la PDF-oj kaj eldoni ilin al GitHub. (Plejparte interesas projektajn prizorgantojn.) `make all` faras la samon kiel `latexmk` (vidu malsupre), kio povas esti utila por redaktila integriĝo (ekz. Emakso).
 * `scripts/ebook/` - bitlibrgeneraciaj skriptoj
 
-## Building the book(s)
+## Kunmeti la libtro(j)
+
+<details lang="en-GB">
+<summary><i>Click to read this section in English</i></summary>
+<blockquote>
+
+***Building the book(s)***
 
 If you do not want to install all requirements on your native system, you can run the build in a Docker container instead. See bottom of [Dockerfile](Dockerfile) for further info.
 
@@ -147,7 +153,16 @@ top directory use the command:
 
 `latexmk -norc -e '$chapterfile="FILENAME"' -r latexmkrc -g FILENAME`
 
-## Contributing
+</blockquote>
+</details>
+
+## Kontribuado
+
+<details lang="en-GB">
+<summary><i>Click to read this section in English</i></summary>
+<blockquote>
+
+***Contributing***
 
 Contributions are most welcome. These fall into the following categories:
 
@@ -172,7 +187,16 @@ by email to the maintainer.
 
 For the GitHub URL, and email address of the maintainer, see above.
 
-## Style guide
+</blockquote>
+</details>
+
+## Stila gvidilo
+
+<details lang="en-GB">
+<summary><i>Click to read this section in English</i></summary>
+<blockquote>
+
+***Style guide***
 
 ### Spelling
 
@@ -237,7 +261,16 @@ These are macros defined in `layout/hp-markup.tex`. You should glance
 through that file to see what commands are available, and use them instead
 of direct markup; for example `\shout` rather than `\textsc`.
 
-## Translations
+</blockquote>
+</details>
+
+## Tradukoj
+
+<details lang="en-GB">
+<summary><i>Click to read this section in English</i></summary>
+<blockquote>
+
+***Translations***
 
 To translate the book, it is recommended to fork this repository, and check
 back from time to time for updates. Also, do open an issue or PR against
@@ -253,6 +286,9 @@ translations of this edition.
 * [English](https://github.com/rrthomas/hpmor) (original)
 * [French](https://github.com/yeKcim/hpmor) (complete)
 * [German](https://github.com/entorb/hpmor-de) (complete)
+
+</blockquote>
+</details>
 
 [LaTeX]: https://www.latex-project.org
 [TeXLive]: https://www.tug.org/texlive
