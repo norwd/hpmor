@@ -1,5 +1,17 @@
-# Harry Potter and the Methods Of Rationality
+# Hari Potr kaj la Metodoj de Racionaleco
 
+<!-- Por angligi, uzu tiun ĉi ŝablonon:
+<details>
+<summary>Click to read this section in English</summary>
+...
+</details>
+-->
+
+<details>
+<summary>Click to read this section in English</summary>
+<emph>Harry Potter and the Methods Of Rationality</emph>
+
+Forked from
 <https://github.com/rrthomas/hpmor>
 Maintainer: Reuben Thomas <rrt@sc3d.org>
 
@@ -8,7 +20,7 @@ by Eliezer Yudkowsky, which can make e-books in PDF, ePub and Mobi formats,
 and six PDF volumes that can be printed and bound. There are also dust
 jackets for the printable volumes.
 
-See [latest release](https://github.com/rrthomas/hpmor/releases/latest)
+See [latest release](https://github.com/norwd/hpmor/releases/latest)
 for PDF and e-book downloads.
 
 TeXLive 2015 or later and git are required to build the book. (Note: the
@@ -20,6 +32,25 @@ single-file PDF. Those chapter numbers are omitted in the text, so chapter
 chapters are renumbered to start from 1 at the start of a book, and there are
 no appendices. Some epigraphs have been omitted but are in the source files
 of the chapters.
+</details>
+
+Prizorgita de Ruben Tomas, kaj tradukita de J. Mejer-Norŭud.
+
+Ĉi tio estas LaTeX-a versio de [la popular didaktika fanfikcio](http://www.hpmor.com) de Eliezer Yudkowsky, kiu povas fariĝi bitlibrojn en multaj formatoj[^subtenataj-formatoj], aŭ ses volumojn kiujn oni povas presi kaj bindi. Ankaŭ estas polvkovriloj por la preseblaj volumoj.
+
+[^subtenataj-formatoj]: Subtenataj formatoj estas PDF, ePub kaj Mobi.
+
+Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por elŝuti PDF-ojn and bitlibrojn.
+
+Por kunmeti la libron, oni bezonas [TeXLive] (2015-a aŭ pli freŝa) kaj [git]. (Rimarku: la libro devas esti kunmetita de gitversikontrola elpreno)
+
+[TeXLive]: https://www.tug.org/texlive
+[git]: https://git-scm.com
+
+Rimarku: la bonusaĵoj (angle "Omake Files", t.e. ĉapitroj 11 kaj 64) estas movitaj al la fino de la ununura-dosiera PDF-o.
+Tiuj ĉapitraj nomeroj estas ellasitaj en le teksto, do ĉapitro 10 estas sekvata de ĉapitro 12, eksemple.
+En la ses-volumoj PDF-oj, ĉiuj ĉapitroj estas renumeritaj el 1 ĉe la komenco de la volumo, kaj ne estas apendicoj.
+Iom da epigrafoj estas ellasitaj sed resti en la font-dosieroj de la ĉapitroj.
 
 ## Files
 
@@ -189,6 +220,7 @@ It is recommended to use `polyglossia` (not `babel`).
 Note: there are other translations of HPMOR; here are listed only
 translations of this edition.
 
+* [English](https://github.com/rrthomas/hpmor) (original)
 * [French](https://github.com/yeKcim/hpmor) (complete)
 * [German](https://github.com/entorb/hpmor-de) (complete)
 
