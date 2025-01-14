@@ -426,6 +426,7 @@ Rimarku: ekzistas aliaj tradukoj de [HPMOR], jen estas listigataj nur tradukoj d
 * [Angla](https://github.com/rrthomas/hpmor) (originala)
 * [Franca](https://github.com/yeKcim/hpmor) (kompleta)
 * [Germana](https://github.com/entorb/hpmor-de) (kompleta)
+* [Esperanta](https://github.com/norwd/hpmor) (ĉi tiu, en progreso)
 
 <!-- Ligilaro / Links -->
 [Dockerfile]: Dockerfile
