@@ -335,16 +335,16 @@ Uzantoj de [Emakso] profitas de `.dir-locals.el` kiu aŭtomate ĝustigas `spelli
 
 ### Ĉapitrotitoloj
 
-Chapters that aren’t part of a continuing series look like this:
+Ĉapitroj kiuj ne estas parto de daŭranta serio aspektas jene:
 
 ```
-\chapter{The Fundamental Attribution Error}
+\chapter{La Fundamenta Atribuado Eraro}
 ```
 
-Chapters that are part of a continuing series look like one of these:
+Ĉapitroj kiuj estas parto de daŭranta serio aspektas jene:
 
 ```
-\partchapter{Working in Groups}{I}
+\partchapter{Laborante en Grupoj}{I}
 ```
 
 ```
