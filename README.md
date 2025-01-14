@@ -156,6 +156,45 @@ top directory use the command:
 </blockquote>
 </details>
 
+Se vi ne volas instali ĉiujn postulojn en via operaciumo, vi povas ruli la kunmetaĵon en Docker-ujo anstataŭe. Vidu malsupron de [Dockerfile] por pliaj informoj.
+
+* `latexmk`: Build all PDFs. (If in doubt, just run this command and do
+  something else for twenty minutes!)
+* `make all`: Build a Zip of the PDFs.
+* `latexmk hpmor`: Build the one-volume PDF `hpmor.pdf`
+* `latexmk hpmor-N`: Build one of the six individual volumes
+  `hpmor-1.pdf` to `hpmor-6.pdf`.
+* `latexmk layout/hpmor-dust-jacket-N`: produce the dust jacket for Volume N,
+  `hpmor-dust-jacket-N.pdf`. Note that this requires the corresponding
+  volume, `hpmor-N.pdf`, to have been built first.
+* `latexmk -c`: Remove files produced by building (except PDFs).
+* `latexmk -C`: Remove files produced by building (including PDFs).
+
+Defaŭlte, la polvaj jakoj supozas 80-grama-po-kvadratmetran simplan paperon (ĉi tio influas la dikecon de la libro kaj do la grandecon de la polvkovrilo).
+Ĉi tio povas esti agordita en `layout/hp-paper-type.tex`; vidu `layout/papers.tex` por listo de paperoj.
+
+La precizaj grandecoj de polvkovriloj povas varii; la nunaj parametroj estis prenitaj de komerca presilo. Ili povas esti alĝustigitaj en `hp-dust-jacket.tex` laŭdezire.
+
+Kiam vi produktas libron kun polvkovrilo, vi eble ne volas ankaŭ la antaŭan kovrilon. Por subpremi la antaŭan kovrilon, uzu la jenan komandon:
+
+```
+latexmk -norc -e '$options="nocover"' -r latexmkrc -g hpmor-1
+```
+
+Kompreneble, vi povas anstataŭigi `hpmor-1` per iu ajn alia volumo, aŭ forlasi ĝin por generi ĉiujn PDF-ojn sen kovrilo.
+
+Por kunmeti ununuran ĉapitron, el la dosierujo `chapters/` rulu la komandon:
+
+```
+latexmk -norc -e '$chapter="N"' -r ../latexmkrc -g hpmor-chapter-NNN
+```
+
+Simile, por kunmeti ununuran apendicon aŭ alian ne-ĉapitran sekcion, el la supra dosierujo rulu la komandon:
+
+```
+latexmk -norc -e '$chapterfile="FILENAME"' -r latexmkrc -g FILENAME
+```
+
 ## Kontribuado
 
 <details lang="en-GB">
@@ -303,6 +342,7 @@ Rimarku: ekzistas aliaj tradukoj de [HPMOR], jen estas listigataj nur tradukoj d
 * [Germana](https://github.com/entorb/hpmor-de) (kompleta)
 
 <!-- Ligilaro / Links -->
+[Dockerfile]: Dockerfile
 [HPMOR]: http://www.hpmor.com
 [LaTeX]: https://www.latex-project.org
 [TeXLive]: https://www.tug.org/texlive
