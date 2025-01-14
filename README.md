@@ -348,7 +348,7 @@ Uzantoj de [Emakso] profitas de `.dir-locals.el` kiu aŭtomate ĝustigas `spelli
 ```
 
 ```
-\namedpartchapter{Self-Actualization}{SA}{VIII}{The Sacred and the Mundane}
+\namedpartchapter{Mem-Aktualigo}{MA}{VIII}{La Sankta kaj la Sekulara}
 ```
 
 La unua estas sufiĉe simpla; ĝi estas nur la titolo de la ĉapitro sekvata de kiu parto ĝi estas.
