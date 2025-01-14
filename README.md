@@ -351,9 +351,9 @@ Uzantoj de [Emakso] profitas de `.dir-locals.el` kiu aŭtomate ĝustigas `spelli
 \namedpartchapter{Self-Actualization}{SA}{VIII}{The Sacred and the Mundane}
 ```
 
-The first is pretty simple; it’s just the title of the chapter followed by which part it is.
+La unua estas sufiĉe simpla; ĝi estas nur la titolo de la ĉapitro sekvata de kiu parto ĝi estas.
 
-The second looks like the title of the chapter, then the abbreviation for the title of the chapter, then the part, then the title of the part.
+La dua aspektas kiel la titolo de la ĉapitro, poste la mallongigo por la titolo de la ĉapitro, poste la parto, poste la titolo de la parto.
 
 ### Unuaj Frazoj
 
@@ -385,7 +385,8 @@ There are some other things relating to newspaper headlines and such; check the 
 
 ### Markado
 
-These are macros defined in `layout/hp-markup.tex`. You should glance through that file to see what commands are available, and use them instead of direct markup; for example `\shout` rather than `\textsc`.
+Ĉi tiuj estas makrooj difinitaj en `layout/hp-markup.tex`.
+Vi devus trarigardi tiun dosieron por vidi disponeblajn komandojn, kaj uzi ilin anstataŭ rekta markado; ekzemple `\shout` prefere ol `\textsc`.
 
 ## Tradukoj
 
