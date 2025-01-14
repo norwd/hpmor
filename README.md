@@ -225,7 +225,24 @@ For the GitHub URL, and email address of the maintainer, see above.
 </blockquote>
 </details>
 
-## Stila gvidilo
+Kontribuoj estas ja bonvenaj.
+Ĉi tiuj kategoriiĝas jene:
+
+1. Tekstaj koretoj.
+   Kie la teksto malsamas de la reta originalo neintence.
+1. Tekstaj plibonigoj.
+   Riparado de rektajn erarojn en la angla (aŭ pli profunda, la senco, rakonto ktp.).
+1. Dezajno kaj tipografio.
+   Plibonigoj al kaj la PDF-aj kaj presitaj versioj de la libroj estas instigitaj. Vidu la cimspuradilon de GitHub por konataj problemoj; ankaŭ serĉu la fontojn por `FIXME` (t.e. "korektu min" en la angla).
+1. Tradukoj.
+   Tradukoj estas kompreneble plej bonvenaj! Listo de konataj tradukoj kaj iom da sugestoj estas donitaj en la [suba sekcio](#tradukoj).
+
+Por tekstoj ŝanĝoj krom simplaj tajperaroj aŭ lingvaj korektoj, bonvolu konatiĝi kun je la [stilgvidilo](#stilgvidilo).
+
+La preferata maniero sendi ajnan plibonigon estas tira peto ĉe GitHub.
+Tekstaj korektoj ankaŭ povas esti proponataj kiel cimraportoj en la cimspuradilo, aŭ retpoŝte al la prizorganto.
+
+## Stilgvidilo
 
 <details lang="en-GB">
 <summary><i>Click to read this section in English</i></summary>
