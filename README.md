@@ -95,7 +95,7 @@ Iom da epigrafoj estas ellasitaj sed resti en la font-dosieroj de la ĉapitroj.
 * `spelling-list.txt` - listo de vortoj uzataj por literumkorekti la libron.
 * `fonts/` - diversaj tiparoj uzataj
 * `latexmkrc` - agordas [latexmk] por konstrui la PDF-ojn per [LaTeX].
-* `GNUMakefile` - enhavas celojn por fari Zip de la PDF-oj kaj eldoni ilin al GitHub. (Plejparte interesas projektajn prizorgantojn.) `make all` faras la samon kiel `latexmk` (vidu malsupre), kio povas esti utila por redaktila integriĝo (ekz. Emakso).
+* `GNUMakefile` - enhavas celojn por fari Zip-dosieron de la PDF-oj kaj eldoni ilin al GitHub. (Plejparte interesas projektajn prizorgantojn.) `make all` faras la samon kiel `latexmk` (vidu malsupre), kio povas esti utila por redaktila integriĝo (ekz. Emakso).
 * `scripts/ebook/` - bitlibrgeneraciaj skriptoj
 
 ## Kunmeti la libtro(j)
@@ -158,17 +158,13 @@ top directory use the command:
 
 Se vi ne volas instali ĉiujn postulojn en via operaciumo, vi povas ruli la kunmetaĵon en Docker-ujo anstataŭe. Vidu malsupron de [Dockerfile] por pliaj informoj.
 
-* `latexmk`: Build all PDFs. (If in doubt, just run this command and do
-  something else for twenty minutes!)
-* `make all`: Build a Zip of the PDFs.
-* `latexmk hpmor`: Build the one-volume PDF `hpmor.pdf`
-* `latexmk hpmor-N`: Build one of the six individual volumes
-  `hpmor-1.pdf` to `hpmor-6.pdf`.
-* `latexmk layout/hpmor-dust-jacket-N`: produce the dust jacket for Volume N,
-  `hpmor-dust-jacket-N.pdf`. Note that this requires the corresponding
-  volume, `hpmor-N.pdf`, to have been built first.
-* `latexmk -c`: Remove files produced by building (except PDFs).
-* `latexmk -C`: Remove files produced by building (including PDFs).
+* `latexmk`: Kunmetu ĉiujn PDF-ojn. (Se vi dubas, simple rulu ĉi tiu komando kaj faru ion alian dum dudek minutoj!)
+* `make all`: Kunmetu Zip-dosieron de la PDF-oj.
+* `latexmk hpmor`: Kunmetu la unu-voluman PDF-on `hpmor.pdf`
+* `latexmk hpmor-N`: Kunmetu unu el la ses individuaj volumoj de `hpmor-1.pdf` ĝis `hpmor-6.pdf`.
+* `latexmk layout/hpmor-dust-jacket-N`: Kunmetu la polvkovrilo por volumo N, `hpmor-dust-jacket-N.pdf`. Rimarku ke tiu komando bezonas la korespondantan volumon, `hpmor-N.pdf`.
+* `latexmk -c`: Forigu dosierojn faritajn per kunmetado (krome PDF-ojn).
+* `latexmk -C`: Forigu dosierojn faritajn per kunmetado (inkluzive krom).
 
 Defaŭlte, la polvaj jakoj supozas 80-grama-po-kvadratmetran simplan paperon (ĉi tio influas la dikecon de la libro kaj do la grandecon de la polvkovrilo).
 Ĉi tio povas esti agordita en `layout/hp-paper-type.tex`; vidu `layout/papers.tex` por listo de paperoj.
