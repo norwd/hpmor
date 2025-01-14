@@ -376,7 +376,7 @@ ardantaj verdaj spiraloj faligis la Ŝilda Sorĉo de sian malamikon.}
 ### Sekcioj
 
 ```
-\section{Final Aftermath:}
+\section{Fina Postsekvo:}
 ```
 
 ### Diversaĵoj
