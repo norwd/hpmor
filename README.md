@@ -316,6 +316,71 @@ of direct markup; for example `\shout` rather than `\textsc`.
 </blockquote>
 </details>
 
+### Literumo
+
+Por literumkontrolado, uzu `spelling-list.txt` anstataŭ via persona vortaro, do la rezultoj malpli dependas de via agordo.
+(La sistemvortaro ankoraŭ povas kompreneble varii de unu aranĝo al alia.)
+
+Vortoj kiuj estas parto de norma angla aŭ parto de la Harry Potter universo aŭ alie uzataj ĉie en la libro estu en la `spelling-list.txt`.
+Ekkrioj (ekzemple "Eeeehhhh") kaj aliaj unufojoj estu en la po-dosiaj vortlistoj.
+(Evidente estas io de griza areo en la mezo, ekz. unufojaj referencoj al diversaj realaj aŭ fikciaj homoj.)
+
+Uzantoj de [Emakso] profitas de `.dir-locals.el` kiu aŭtomate ĝustigas `spelling-list.txt` kiel la persona vortaro por ĉiuj [HPMOR] dosieroj.
+
+### Ĉapitrotitoloj
+
+Chapters that aren’t part of a continuing series look like this:
+
+```
+\chapter{The Fundamental Attribution Error}
+```
+
+Chapters that are part of a continuing series look like one of these:
+
+```
+\partchapter{Working in Groups}{I}
+```
+
+```
+\namedpartchapter{Self-Actualization}{SA}{VIII}{The Sacred and the Mundane}
+```
+
+The first is pretty simple; it’s just the title of the chapter followed by which part it is.
+
+The second looks like the title of the chapter, then the abbreviation for the title of the chapter, then the part, then the title of the part.
+
+### Unuaj Frazoj
+
+Normally, a chapter starts like this:
+
+```
+\lettrine{P}{adma} Patil had finished
+```
+
+That creates the large initial letter.
+
+If the first paragraph of the chapter is all italics, though, it looks like this:
+
+```
+\begin{em}\lettrine{T}{he} red jet of fire took Hannah full in the
+[...]
+blazing green spirals brought down their foe’s Shield Charm.\par\end{em}
+```
+
+### Sekcioj
+
+```
+\section{Final Aftermath:}
+```
+
+### Diversaĵoj
+
+There are some other things relating to newspaper headlines and such; check the chapters they appear in for the appropriate markup.
+
+### Markado
+
+These are macros defined in `layout/hp-markup.tex`. You should glance through that file to see what commands are available, and use them instead of direct markup; for example `\shout` rather than `\textsc`.
+
 ## Tradukoj
 
 <details lang="en-GB">
@@ -360,6 +425,7 @@ Rimarku: ekzistas aliaj tradukoj de [HPMOR], jen estas listigataj nur tradukoj d
 [LaTeX]: https://www.latex-project.org
 [TeXLive]: https://www.tug.org/texlive
 [git]: https://git-scm.com
+[Emakso]: https://www.gnu.org/software/emacs
 [memoir]: https://ctan.org/pkg/memoir
 [latexmk]: https://ctan.org/pkg/latexmk
 [polyglossia]: https://ctan.org/pkg/polyglossia
