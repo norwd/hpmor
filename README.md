@@ -368,9 +368,9 @@ Tio kreas la grandan komencan literon.
 Se la unua alineo de la ĉapitro estas kursiva, tiam ĝi aspektas jene:
 
 ```
-\begin{em}\lettrine{T}{he} red jet of fire took Hannah full in the
+\lettrine{L}{\emph{a}} \emph{ruĝa fajroĵeto trafis Hanna plene en la
 [...]
-blazing green spirals brought down their foe’s Shield Charm.\par\end{em}
+ardantaj verdaj spiraloj faligis la Ŝilda Sorĉo de sian malamikon.}
 ```
 
 ### Sekcioj
