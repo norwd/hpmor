@@ -88,15 +88,15 @@ Iom da epigrafoj estas ellasitaj sed resti en la font-dosieroj de la ĉapitroj.
 </blockquote>
 </details>
 
-* `hpmor.tex` - la ĉefa dosiero
-* `layout/hp-format.tex` - plejparte agordas [memoir]
-* `layout/hp-markup.tex` - logikaj markadaj komandoj uzataj en la teksto
+* `hpmor.tex` - la ĉefa dosiero.
+* `layout/hp-format.tex` - plejparte agordas [memoir].
+* `layout/hp-markup.tex` - logikaj markadaj komandoj uzataj en la teksto.
 * `chapters/` - unu dosiero po ĉapitro, inkluzataj en `hpmor.tex` kaj la unuopaj volumoj `hpmor-N.tex`.
 * `spelling-list.txt` - listo de vortoj uzataj por literumkorekti la libron.
-* `fonts/` - diversaj tiparoj uzataj
+* `fonts/` - diversaj tiparoj uzataj.
 * `latexmkrc` - agordas [latexmk] por konstrui la PDF-ojn per [LaTeX].
 * `GNUMakefile` - enhavas celojn por fari Zip-dosieron de la PDF-oj kaj eldoni ilin al GitHub. (Plejparte interesas projektajn prizorgantojn.) `make all` faras la samon kiel `latexmk` (vidu malsupre), kio povas esti utila por redaktila integriĝo (ekz. Emakso).
-* `scripts/ebook/` - bitlibrgeneraciaj skriptoj
+* `scripts/ebook/` - bitlibrgeneraciaj skriptoj.
 
 ## Kunmeti la libtro(j)
 
@@ -156,22 +156,27 @@ top directory use the command:
 </blockquote>
 </details>
 
-Se vi ne volas instali ĉiujn postulojn en via operaciumo, vi povas ruli la kunmetaĵon en Docker-ujo anstataŭe. Vidu malsupron de [Dockerfile] por pliaj informoj.
+Se vi ne volas instali ĉiujn postulojn en via operaciumo, vi povas ruli la kunmetaĵon en Docker-ujo anstataŭe.
+Vidu malsupron de [Dockerfile] por pliaj informoj.
 
-* `latexmk`: Kunmetu ĉiujn PDF-ojn. (Se vi dubas, simple rulu ĉi tiu komando kaj faru ion alian dum dudek minutoj!)
+* `latexmk`: Kunmetu ĉiujn PDF-ojn.
+  (Se vi dubas, simple rulu ĉi tiu komando kaj faru ion alian dum dudek minutoj!)
 * `make all`: Kunmetu Zip-dosieron de la PDF-oj.
 * `latexmk hpmor`: Kunmetu la unu-voluman PDF-on `hpmor.pdf`
 * `latexmk hpmor-N`: Kunmetu unu el la ses individuaj volumoj de `hpmor-1.pdf` ĝis `hpmor-6.pdf`.
-* `latexmk layout/hpmor-dust-jacket-N`: Kunmetu la polvkovrilo por volumo N, `hpmor-dust-jacket-N.pdf`. Rimarku ke tiu komando bezonas la korespondantan volumon, `hpmor-N.pdf`.
+* `latexmk layout/hpmor-dust-jacket-N`: Kunmetu la polvkovrilo por volumo N, `hpmor-dust-jacket-N.pdf`.
+  Rimarku ke tiu komando bezonas la korespondantan volumon, `hpmor-N.pdf`.
 * `latexmk -c`: Forigu dosierojn faritajn per kunmetado (krome PDF-ojn).
 * `latexmk -C`: Forigu dosierojn faritajn per kunmetado (inkluzive krom).
 
 Defaŭlte, la polvaj jakoj supozas 80-grama-po-kvadratmetran simplan paperon (ĉi tio influas la dikecon de la libro kaj do la grandecon de la polvkovrilo).
 Ĉi tio povas esti agordita en `layout/hp-paper-type.tex`; vidu `layout/papers.tex` por listo de paperoj.
 
-La precizaj grandecoj de polvkovriloj povas varii; la nunaj parametroj estis prenitaj de komerca presilo. Ili povas esti alĝustigitaj en `hp-dust-jacket.tex` laŭdezire.
+La precizaj grandecoj de polvkovriloj povas varii; la nunaj parametroj estis prenitaj de komerca presilo.
+Ili povas esti alĝustigitaj en `hp-dust-jacket.tex` laŭdezire.
 
-Kiam vi produktas libron kun polvkovrilo, vi eble ne volas ankaŭ la antaŭan kovrilon. Por subpremi la antaŭan kovrilon, uzu la jenan komandon:
+Kiam vi produktas libron kun polvkovrilo, vi eble ne volas ankaŭ la antaŭan kovrilon.
+Por subpremi la antaŭan kovrilon, uzu la jenan komandon:
 
 ```
 latexmk -norc -e '$options="nocover"' -r latexmkrc -g hpmor-1
@@ -188,7 +193,7 @@ latexmk -norc -e '$chapter="N"' -r ../latexmkrc -g hpmor-chapter-NNN
 Simile, por kunmeti ununuran apendicon aŭ alian ne-ĉapitran sekcion, el la supra dosierujo rulu la komandon:
 
 ```
-latexmk -norc -e '$chapterfile="FILENAME"' -r latexmkrc -g FILENAME
+latexmk -norc -e '$chapterfile="DOSIERNOMO"' -r latexmkrc -g DOSIERNOMO
 ```
 
 ## Kontribuado
@@ -233,7 +238,8 @@ Kontribuoj estas ja bonvenaj.
 1. Tekstaj plibonigoj.
    Riparado de rektajn erarojn en la angla (aŭ pli profunda, la senco, rakonto ktp.).
 1. Dezajno kaj tipografio.
-   Plibonigoj al kaj la PDF-aj kaj presitaj versioj de la libroj estas instigitaj. Vidu la cimspuradilon de GitHub por konataj problemoj; ankaŭ serĉu la fontojn por `FIXME` (t.e. "korektu min" en la angla).
+   Plibonigoj al kaj la PDF-aj kaj presitaj versioj de la libroj estas instigitaj.
+   Vidu la cimspuradilon de GitHub por konataj problemoj; ankaŭ serĉu la fontojn por `FIXME` (t.e. "korektu min" en la angla).
 1. Tradukoj.
    Tradukoj estas kompreneble plej bonvenaj! Listo de konataj tradukoj kaj iom da sugestoj estas donitaj en la [suba sekcio](#tradukoj).
 
