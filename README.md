@@ -357,15 +357,15 @@ The second looks like the title of the chapter, then the abbreviation for the ti
 
 ### Unuaj Frazoj
 
-Normally, a chapter starts like this:
+Normale, ĉapitro komenciĝas jene:
 
 ```
-\lettrine{P}{adma} Patil had finished
+\lettrine{P}{adma} Patil finis sian vespermanĝon...
 ```
 
-That creates the large initial letter.
+Tio kreas la grandan komencan literon.
 
-If the first paragraph of the chapter is all italics, though, it looks like this:
+Se la unua alineo de la ĉapitro estas kursiva, tiam ĝi aspektas jene:
 
 ```
 \begin{em}\lettrine{T}{he} red jet of fire took Hannah full in the
@@ -413,7 +413,8 @@ translations of this edition.
 </blockquote>
 </details>
 
-Por traduki la libron, oni rekomendas projektforki ĉi tiun deponejon, kaj rerigardi de tempo al tempo por ĝisdatigoj. Ankaŭ, bonvolu sugesti ŝanĝojn kontraŭ ĉi tiu dosiero por aldoni pliajn tradukojn!
+Por traduki la libron, oni rekomendas projektforki ĉi tiun deponejon, kaj rerigardi de tempo al tempo por ĝisdatigoj.
+Ankaŭ, bonvolu sugesti ŝanĝojn kontraŭ ĉi tiu dosiero por aldoni pliajn tradukojn!
 
 Oni rekomendas uzi [polyglossia] (anstataŭ [babel]), sed [babel] funkcias pli bone por Esperantigado.
 
