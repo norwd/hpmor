@@ -381,7 +381,7 @@ ardantaj verdaj spiraloj faligis la Ŝilda Sorĉo de sian malamikon.}
 
 ### Diversaĵoj
 
-There are some other things relating to newspaper headlines and such; check the chapters they appear in for the appropriate markup.
+Estas kelkaj aliaj aferoj rilataj al la titoloj de gazetoj kaj tiaj; Rigardu la ĉapitrojn en kiuj tiuj titoloj estas por vidi kiel fari la markadon.
 
 ### Markado
 
