@@ -58,10 +58,13 @@ Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por el�
 
 Por kunmeti la libron, oni bezonas [TeXLive] (2015-a aŭ pli freŝa) kaj [git]. (Rimarku: la libro devas esti kunmetita de gitversikontrola elpreno)
 
-Rimarku: la bonusaĵoj (angle "Omake Files", t.e. ĉapitroj 11 kaj 64) estas movitaj al la fino de la ununura-dosiera PDF-o.
-Tiuj ĉapitraj nomeroj estas ellasitaj en le teksto, do ĉapitro 10 estas sekvata de ĉapitro 12, ekzemple.
-En la ses-volumoj PDF-oj, ĉiuj ĉapitroj estas renumeritaj el 1 ĉe la komenco de la volumo, kaj ne estas apendicoj.
-Iom da epigrafoj estas ellasitaj sed resti en la font-dosieroj de la ĉapitroj.
+Rimarku: en la originala libro estas bonusaĵoj (angle nomata "Omake Files"[^omake], t.e. ĉapitroj 11 kaj 64).
+Tiuj ĉapitroj estas forigitaj ĉar ili estas nekanonaj (kaj ili ne estas parto de la rakonto).
+Tial tiuj ĉapitraj numeroj estas ellasitaj en la teksto, do ekzemple ĉapitro 10 estas sekvata de ĉapitro 12.
+En la ses-volumaj PDF-oj, ĉiuj ĉapitroj estas renumeritaj de 1 ĉe la komenco de la volumo, kaj ne estas apendicoj.
+Kelkaj epigrafoj estas ellasitaj sed restas en la font-dosieroj de la ĉapitroj.
+
+[^omake]: https://en.wikipedia.org/wiki/Omake
 
 ## Dosieroj
 
