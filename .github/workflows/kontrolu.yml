@@ -1,0 +1,36 @@
+---
+
+name: "Kontrolu"
+
+on:
+  workflow_dispatch:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  kontrolu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1 # 0 if you want to push to repo
+
+      - run: touch requirements.txt
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - run: python3 scripts/check_chapters.py
+
+      - uses: pre-commit/action@v3.0.1
+
+      - run: wget "${URL}" -O gramma.zip && unzip gramma.zip
+        env:
+          URL: https://github.com/caderek/gramma/releases/download/v1.6.0/gramma-linux64-v1.6.0.zip
+
+      - run: find . -name '*.tex' | xargs -IFILE ./gramma --print --markdown --language eo check <(pandoc FILE --standalone --from latex --to markdown)
