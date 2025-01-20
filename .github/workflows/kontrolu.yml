@@ -1,0 +1,49 @@
+---
+
+name: "Kontrolu"
+run-name: "Kontrolu"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+      - ready_for_review
+
+permissions:
+  contents: read
+
+jobs:
+  kontrolu:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt install pandoc
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - run: touch requirements.txt
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - run: python3 scripts/check_chapters.py
+
+      - uses: pre-commit/action@v3.0.1
+
+      - run: wget "${URL}" -O gramma.zip && unzip gramma.zip
+        env:
+          URL: https://github.com/caderek/gramma/releases/download/v1.6.0/gramma-linux64-v1.6.0.zip
+
+      - run: git diff --name-only "origin/${HEAD}" "$(git merge-base  "origin/${HEAD}" "origin/${BASE}" --)" -- | grep '\.tex$' | xargs --verbose -IFILE pandoc FILE --standalone --from latex --to plain --output FILE.gramma.md
+        env:
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+
+      - run: find . -name '*.gramma.md' | xargs --verbose -IFILE ./gramma --print --markdown check FILE
