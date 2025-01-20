@@ -18,6 +18,8 @@ jobs:
   kontrolu:
     runs-on: ubuntu-latest
     steps:
+      - run: sudo apt install tidy pandoc
+
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
