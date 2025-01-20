@@ -40,9 +40,7 @@ jobs:
         env:
           URL: https://github.com/caderek/gramma/releases/download/v1.6.0/gramma-linux64-v1.6.0.zip
 
-      - run: git diff --name-only "origin/${HEAD}" "$(git merge-base
-        "origin/${HEAD}" "origin/${BASE}" --)" -- | grep '\.tex$' | xargs
---verbose -IFILE pandoc FILE --standalone --from latex --to plain --output FILE.gramma.md
+      - run: git diff --name-only "origin/${HEAD}" "$(git merge-base  "origin/${HEAD}" "origin/${BASE}" --)" -- | grep '\.tex$' | xargs --verbose -IFILE pandoc FILE --standalone --from latex --to plain --output FILE.gramma.md
         env:
           BASE: ${{ github.base_ref }}
           HEAD: ${{ github.head_ref }}
