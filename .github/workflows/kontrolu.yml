@@ -1,6 +1,7 @@
 ---
 
 name: "Kontrolu"
+run-name: "Kontrolu"
 
 on:
   pull_request:
