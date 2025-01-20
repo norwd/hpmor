@@ -18,7 +18,7 @@ jobs:
   kontrolu:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt install tidy pandoc
+      - run: sudo apt install pandoc
 
       - uses: actions/checkout@v4
         with:
