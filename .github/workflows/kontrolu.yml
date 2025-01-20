@@ -46,4 +46,4 @@ jobs:
           BASE: ${{ github.base_ref }}
           HEAD: ${{ github.head_ref }}
 
-      - run: find . -name '*.gramma.md' | xargs --verbose -IFILE ./gramma --print --markdown --language eo check FILE
+      - run: find . -name '*.gramma.md' | xargs --verbose -IFILE ./gramma --print --markdown check FILE
