@@ -3,8 +3,13 @@
 name: "Kontrolu"
 
 on:
-  workflow_dispatch:
-  push:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+      - ready_for_review
 
 permissions:
   contents: read
@@ -16,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-          fetch-depth: 1 # 0 if you want to push to repo
+          fetch-depth: 0
 
       - run: touch requirements.txt
 
@@ -33,4 +38,9 @@ jobs:
         env:
           URL: https://github.com/caderek/gramma/releases/download/v1.6.0/gramma-linux64-v1.6.0.zip
 
-      - run: find . -name '*.tex' | xargs -IFILE ./gramma --print --markdown --language eo check <(pandoc FILE --standalone --from latex --to markdown)
+      - run: git diff --name-only "${HEAD}" "$(git merge-base "${HEAD}" "${BASE}")" | grep '\.tex$' | xargs -IFILE pandoc FILE --standalone --from latex --to markdown --output FILE.md
+        env:
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+
+      - run: find . -name '*.md'  | xargs -IFILE ./gramma --print --markdown --language eo check FILE
