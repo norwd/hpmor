@@ -7,7 +7,7 @@ on:
 
 concurrency:
   group: ${{ github.workflow_ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   kunmetu:
@@ -27,15 +27,26 @@ jobs:
 
       - run: wget --quiet "${URL}" -O hpmor-prev.html
         env:
-          URL: https://github.com/${{ github.repository }}/releases/tag/LaboroEnProgreso/hpmor.html
+          URL: https://github.com/${{ github.repository }}/releases/download/LaboroEnProgreso/hpmor.html
+
+      # https://github.com/abbbi/github-actions-tune/blob/master/speedup.sh
+      - run: sudo sed -i 's/yes/no/g' '/etc/initramfs-tools/update-initramfs.conf'
+      - run: sudo rm -f /var/lib/man-db/auto-update
+      - run: sudo sed '/fontconfig/d' -i '/var/lib/dpkg/triggers/File'
+      - run: sudo sed '/install-info/d' -i '/var/lib/dpkg/triggers/File'
+      - run: sudo sed '/mime/d' -i '/var/lib/dpkg/triggers/File'
+      - run: sudo sed '/hicolor-icon-theme/d' -i '/var/lib/dpkg/triggers/File'
+      - run: echo "force-unsafe-io" | sudo tee -a /etc/dpkg/dpkg.cfg.d/force-unsafe-io
+      - run: echo -e '#!/bin/sh\nexec eatmydata /usr/bin/dpkg $@' | sudo tee /usr/local/bin/dpkg && sudo chmod +x /usr/local/bin/dpkg
+      - run: echo -e '#!/bin/sh\nexec eatmydata /usr/bin/apt $@' | sudo tee /usr/local/bin/apt && sudo chmod +x /usr/local/bin/apt
+      - run: echo -e '#!/bin/sh\nexec eatmydata /usr/bin/apt-get $@' | sudo tee /usr/local/bin/apt-get && sudo chmod +x /usr/local/bin/apt-get
 
       - run: sh scripts/install_requirements.sh
       - run: sh scripts/make_pdfs.sh
       - run: sh scripts/make_ebooks.sh
 
-      - run: |
-          diff -u hpmor-prev.html hpmor.html > hpmor-html-diff.log || :
-          rm hpmor-prev.html
+      - run: diff -u -s hpmor-prev.html hpmor.html | tee hpmor-html-diff.log
+      - run: rm hpmor-prev.html
 
       - id: upload-artifact
         uses: actions/upload-artifact@v4
@@ -43,15 +54,21 @@ jobs:
           name: bitlibrojn
           retention-days: 14
           path: |
+            ./hpmor-html-diff.log
             ./hpmor*.pdf
             ./hpmor.epub
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
 
-      - run: echo "ARTIFACT_URL=${ARTIFACT_URL}" | tee -a "$GITHUB_ENV" | tee -a "${GITHUB_STEP_SUMMARY}"
+      - run: echo "ARTIFACT_URL=${ARTIFACT_URL}" | tee -a "$GITHUB_ENV"
         env:
           ARTIFACT_URL: ${{ steps.upload-artifact.outputs.artifact-url }}
+
+      - run: |
+          tee -a "${GITHUB_STEP_SUMMARY}" << EOF
+          Artifact uploaded as ${ARTIFACT_URL}
+          EOF
 
       - if: github.ref_name == 'esperantigo/unua-provo'
         uses: softprops/action-gh-release@v2
@@ -62,6 +79,7 @@ jobs:
           tag_name: LaboroEnProgreso
           prerelease: true
           files: |
+            ./hpmor-html-diff.log
             ./hpmor*.pdf
             ./hpmor.epub
             ./hpmor.mobi
