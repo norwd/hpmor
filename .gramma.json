@@ -101,7 +101,7 @@
   ],
   "language": "eo",
   "rules": {
-    "casing": true,
+    "casing": false,
     "colloquialisms": true,
     "compounding": true,
     "confused_words": true,
