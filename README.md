@@ -413,6 +413,8 @@ translations of this edition.
 * [English](https://github.com/rrthomas/hpmor) (original)
 * [French](https://github.com/yeKcim/hpmor) (complete)
 * [German](https://github.com/entorb/hpmor-de) (complete)
+* [Esperanto](https://github.com/norwd/hpmor) (in progress)
+  [![milestone details](https://img.shields.io/github/milestones/progress/norwd/hpmor/1?label=Chapters%20Completed)](https://github.com/norwd/hpmor/releases/tag/LaboroEnProgreso)
 
 </blockquote>
 </details>
@@ -430,6 +432,7 @@ Rimarku: ekzistas aliaj tradukoj de [HPMOR], jen estas listigataj nur tradukoj d
 * [Franca](https://github.com/yeKcim/hpmor) (kompleta)
 * [Germana](https://github.com/entorb/hpmor-de) (kompleta)
 * [Esperanta](https://github.com/norwd/hpmor) (ĉi tiu, en progreso)
+  [![milestone details](https://img.shields.io/github/milestones/progress/norwd/hpmor/1?label=Ĉapitroj%20Kompletigitaj)](https://github.com/norwd/hpmor/releases/tag/LaboroEnProgreso)
 
 <!-- Ligilaro / Links -->
 [Dockerfile]: Dockerfile
