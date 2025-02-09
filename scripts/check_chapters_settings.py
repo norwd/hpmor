@@ -10,7 +10,7 @@ inline_fixing: modify the source file directly, USE WITH CAUTION
 """
 
 settings = {
-    "lang": "EN",
+    "lang": "EO",
     "print_diff": True,
     "raise_error": True,
     "inline_fixing": False,
