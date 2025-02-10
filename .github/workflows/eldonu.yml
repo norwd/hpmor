@@ -1,6 +1,7 @@
 ---
 
-name: Kreu eldonon
+name: "Kreu eldonon"
+run-name: "Kreu eldonon ${{ inputs.version_number }}"
 
 on:
   workflow_dispatch:
@@ -27,7 +28,6 @@ jobs:
           fetch-depth: 0
 
       - run: ln -s python-requirements.txt requirements.txt
-      - run: touch requirements.txt
 
       - uses: actions/setup-python@v5
         with:
