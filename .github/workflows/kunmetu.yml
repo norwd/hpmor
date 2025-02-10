@@ -1,3 +1,5 @@
+---
+
 name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
 run-name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
 
@@ -14,12 +16,11 @@ jobs:
     name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
     runs-on: ubuntu-latest
     steps:
-
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - run: touch requirements.txt
+      - run: ln -s python-requirements.txt requirements.txt
 
       - uses: actions/setup-python@v5
         with:
@@ -48,8 +49,7 @@ jobs:
       - run: diff -u -s hpmor-prev.html hpmor.html | tee hpmor-html-diff.log
       - run: rm hpmor-prev.html
 
-      - id: upload-artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: bitlibrojn
           retention-days: 14
@@ -60,15 +60,6 @@ jobs:
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
-
-      - run: echo "ARTIFACT_URL=${ARTIFACT_URL}" | tee -a "$GITHUB_ENV"
-        env:
-          ARTIFACT_URL: ${{ steps.upload-artifact.outputs.artifact-url }}
-
-      - run: |
-          tee -a "${GITHUB_STEP_SUMMARY}" << EOF
-          Artifact uploaded as ${ARTIFACT_URL}
-          EOF
 
       - if: github.ref_name == 'esperantigo/unua-provo'
         uses: softprops/action-gh-release@v2
