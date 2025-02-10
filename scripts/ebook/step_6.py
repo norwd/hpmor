@@ -8,12 +8,26 @@ HTML modifications.
 
 import os
 import re
+import sys
 from pathlib import Path
+
+from lxml import etree  # pip install lxml
 
 os.chdir(Path(__file__).parent.parent.parent)
 
 source_file = Path("tmp/hpmor-epub-5-html-unmod.html")
 target_file = Path("hpmor.html")
+
+
+def check_html(cont: str) -> None:
+    """Check html syntax."""
+    parser = etree.XMLParser(recover=False)  # Do not auto-fix errors
+    try:
+        etree.fromstring(cont, parser)  # noqa: S320
+    except etree.XMLSyntaxError as e:
+        print("HTML Error:", e)
+        sys.exit(1)
+        # raise
 
 
 def fix_ellipsis(s: str) -> str:
@@ -23,7 +37,7 @@ def fix_ellipsis(s: str) -> str:
     # 1. remove all spaces around ellipsis
     s = re.sub(r" *… *", "…", s)
     # 2. recreate some spaces
-    # before punctuation : no space, so governed by 1.
+    # before punctuation : no space, so covered by 1.
     # between words
     s = re.sub(r"(?<=[\w])…(?=[\w])", "… ", s)
     # after punctuation: add space
@@ -33,7 +47,7 @@ def fix_ellipsis(s: str) -> str:
     s = re.sub(r"…(?=<em>)", "… ", s)
     # before opening EN-quotes: add space
     s = re.sub(r"…(?=[“])", "… ", s)
-    # before opening DE-quotes: add space
+    # NO: before opening DE-quotes: add space
     # s = re.sub(r"…(?=[„])", "… ", s)
     return s
 
@@ -43,10 +57,21 @@ if __name__ == "__main__":
 
     with source_file.open(encoding="utf-8", newline="\n") as fh_in:
         cont = fh_in.read()
+    print("checking source html")
+    check_html(cont)
 
     # remove strange leftovers from tex -> html conversion
     cont = re.sub(
         r"(</header>).*?<p>Book :</p>\n",
+        r"\1",
+        cont,
+        flags=re.DOTALL | re.IGNORECASE,
+        count=1,
+    )
+
+    # stray </div> leftover
+    cont = re.sub(
+        r"(github.com/rrthomas/hpmor/</a></p>)\s+</div>",
         r"\1",
         cont,
         flags=re.DOTALL | re.IGNORECASE,
@@ -66,7 +91,7 @@ if __name__ == "__main__":
     cont = re.sub("<p>Year at Hogwarts</p>\n", "", cont, count=7)
     cont = re.sub(
         "</em></p>\n<p><em>Harry Potter and the",
-        "<br>\nHarry Potter and the",
+        "<br />\nHarry Potter and the",
         cont,
         count=7,
     )
@@ -79,15 +104,6 @@ if __name__ == "__main__":
     #     cont,
     #     count=1,
     # )
-
-    # remove training slashes to satisfy https://validator.w3.org
-    cont = cont.replace("<br />", "<br>")
-    cont = cont.replace("<hr />", "<hr>")
-    cont = re.sub(
-        r"(<meta [^>]*) />",
-        r"\1>",
-        cont,
-    )
 
     # fix spaces around ellipsis
     cont = fix_ellipsis(cont)
@@ -148,6 +164,18 @@ if __name__ == "__main__":
     with Path("scripts/ebook/html.css").open(encoding="utf-8", newline="\n") as fh_in:
         css = fh_in.read()
     cont = cont.replace("</style>\n", css + "\n</style>\n")
+
+    print("checking target html")
+    check_html(cont)
+
+    # remove training slashes to satisfy https://validator.w3.org
+    cont = cont.replace("<br />", "<br>")
+    cont = cont.replace("<hr />", "<hr>")
+    cont = re.sub(
+        r"(<meta [^>]*) />",
+        r"\1>",
+        cont,
+    )
 
     with target_file.open(mode="w", encoding="utf-8", newline="\n") as fh_out:
         fh_out.write(cont)
