@@ -77,13 +77,8 @@ jobs:
           target_commitish: ${{ github.sha }}
           files: |
             ./hpmor-html-diff.log
-            ./hpmor*.pdf
             ./hpmor.epub
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
-            ./hpmor.epub
-            ./hpmor.fb2
-            ./hpmor.html
-            ./hpmor.mobi
             ./hpmor*.pdf
