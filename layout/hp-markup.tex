@@ -183,3 +183,15 @@
 % A break followed by a new section
 \newcommand{\latersection}[1]{\sbre@k\section{#1}}
 \makeatother
+
+% Toggle IsEnglish for debugging
+%
+%     \iftoggle{isEnglish}{%
+%         \lettrine{E}{very} inch of wall space is covered by a bookcase.
+%     }{%
+%         \lettrine{Ĉ}{iu} colo de muro-spaco estas kovrita per libro-ŝrankaĵo.
+%     }
+%
+% See: https://tex.stackexchange.com/a/5896
+\newtoggle{isEnglish}
+\togglefalse{isEnglish} % or \toggletrue{isEnglish}
