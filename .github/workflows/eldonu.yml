@@ -1,20 +1,27 @@
 ---
 
-name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
-run-name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
+name: "Kreu eldonon"
+run-name: "Kreu eldonon ${{ inputs.version_number }}"
 
 on:
-  push:
-    branches-ignore: [main]
+  workflow_dispatch:
+    inputs:
 
-concurrency:
-  group: ${{ github.workflow_ref }}
-  cancel-in-progress: true
+      version_number:
+        required: true
+        default: "vX.Y.Z"
+        description: |
+          Versia numero
+
+      version_text:
+        required: true
+        default: ""
+        description: |
+          Priskribo de la eldono
 
 jobs:
-  kunmetu:
-    name: "Kunmetu HPMOR-ajn PDF-dosierojn kaj Bitlibrojn"
-    runs-on: ubuntu-latest
+  release:
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,8 +39,8 @@ jobs:
 
       - uses: abbbi/github-actions-tune@v1
 
-      - run: sh scripts/install_requirements.sh
-      - run: sh scripts/make_pdfs.sh
+      - run: sh scripts/install_requirements.sh > /dev/null
+      - run: sh scripts/make_pdfs.sh > /dev/null
       - run: sh scripts/make_ebooks.sh
 
       - run: diff -u -s hpmor-prev.html hpmor.html | tee hpmor-html-diff.log
@@ -45,24 +52,23 @@ jobs:
           retention-days: 14
           path: |
             ./hpmor-html-diff.log
-            ./hpmor*.pdf
             ./hpmor.epub
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
+            ./hpmor*.pdf
 
       - if: github.ref_name == 'esperantigo/unua-provo'
         uses: softprops/action-gh-release@v2
         with:
-          name: "Laboro en Progreso"
-          body: "Ĉi tiu eldono estas laboro en progreso."
+          tag_name: "${{ inputs.version_number }}"
+          body: "${{ inputs.version_text }}"
+          prerelease: false
           target_commitish: ${{ github.sha }}
-          tag_name: LaboroEnProgreso
-          prerelease: true
           files: |
             ./hpmor-html-diff.log
-            ./hpmor*.pdf
             ./hpmor.epub
             ./hpmor.mobi
             ./hpmor.fb2
             ./hpmor.html
+            ./hpmor*.pdf
