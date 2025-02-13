@@ -46,7 +46,7 @@ jobs:
           \newtoggle{isEnglish}
           EOF
 
-      - run: git diff --name-only "origin/${HEAD}" "$(git merge-base "origin/${HEAD}" "origin/${BASE}" --)" -- | grep 'chapters/.*\.tex$' | xargs --verbose -IFILE pandoc --include-in-header=header.tex FILE --standalone --from latex --to plain --output FILE.gramma.md
+      - run: git diff --name-only "origin/${HEAD}" "$(git merge-base "origin/${HEAD}" "origin/${BASE}" --)" -- | grep 'chapters/.*\.tex$' | xargs --verbose -IFILE pandoc header.tex FILE --standalone --from latex --to plain --output FILE.gramma.md
         env:
           BASE: ${{ github.base_ref }}
           HEAD: ${{ github.head_ref }}
