@@ -42,15 +42,11 @@ jobs:
           URL: https://github.com/caderek/gramma/releases/download/v1.6.0/gramma-linux64-v1.6.0.zip
 
       - run: |
-          tee header-includes.yaml << EOF
-          ---
-          header-includes: |
-            \newtoggle{isEnglish}
-            \togglefalse{isEnglish}
-          ...
+          tee header.tex << EOF
+          \newtoggle{isEnglish}
           EOF
 
-      - run: git diff --name-only "origin/${HEAD}" "$(git merge-base "origin/${HEAD}" "origin/${BASE}" --)" -- | grep 'chapters/.*\.tex$' | xargs --verbose -IFILE pandoc header-includes.yaml FILE --standalone --from latex --to plain --output FILE.gramma.md
+      - run: git diff --name-only "origin/${HEAD}" "$(git merge-base "origin/${HEAD}" "origin/${BASE}" --)" -- | grep 'chapters/.*\.tex$' | xargs --verbose -IFILE pandoc --include-in-header=header.tex FILE --standalone --from latex --to plain --output FILE.gramma.md
         env:
           BASE: ${{ github.base_ref }}
           HEAD: ${{ github.head_ref }}
