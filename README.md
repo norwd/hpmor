@@ -46,11 +46,10 @@ of the chapters.
 
 Prizorgita de Ruben Tomas, kaj tradukita de J. Mejer-Norŭud.
 
-Ĉi tio estas [LaTeX]-a versio de [la popular didaktika fanfikcio][HPMOR] de Eliezer Judkaŭski,
+Ĉi tio estas [LaTeX]-a versio de [la populara didaktika fanfikcio][HPMOR] de Eliezer Judkaŭski,
 kiu povas fariĝi bitlibrojn en multaj formatoj[^subtenataj-formatoj],
 aŭ ses volumojn kiujn oni povas presi kaj bindi.
 Ankaŭ estas polvkovriloj por la preseblaj volumoj.
-
 
 [^subtenataj-formatoj]: Subtenataj formatoj estas PDF, ePub kaj Mobi.
 
