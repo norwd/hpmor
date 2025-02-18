@@ -65,7 +65,7 @@ of the chapters.
 
 [^omake]: https://en.wikipedia.org/wiki/Omake
 
-## Dosieroj
+## Досиэрой
 
 <details lang="en-GB">
 <summary><i>Click to read this section in English</i></summary>
@@ -90,15 +90,15 @@ of the chapters.
 </blockquote>
 </details>
 
-* `hpmor.tex` - la ĉefa dosiero.
-* `layout/hp-format.tex` - plejparte agordas [memoir].
-* `layout/hp-markup.tex` - logikaj markadaj komandoj uzataj en la teksto.
-* `chapters/` - unu dosiero po ĉapitro, inkluzataj en `hpmor.tex` kaj la unuopaj volumoj `hpmor-N.tex`.
-* `spelling-list.txt` - listo de vortoj uzataj por literumkorekti la libron.
+* `hpmor.tex` - ла чэфа досиэро.
+* `layout/hp-format.tex` - плэйпартэ агордас [memoir].
+* `layout/hp-markup.tex` - логикай маркадай командой узатай эн ла тэксто.
+* `chapters/` - уну досиэро по чапитро, инклузатай эн `hpmor.tex` кай ла унуопай волумой `hpmor-N.tex`.
+* `spelling-list.txt` - листо дэ вортой узатай пор литэрумкорэкти ла либрон.
 * `fonts/` - diversaj tiparoj uzataj.
-* `latexmkrc` - agordas [latexmk] por konstrui la PDF-ojn per [LaTeX].
-* `GNUMakefile` - enhavas celojn por fari Zip-dosieron de la PDF-oj kaj eldoni ilin al GitHub. (Plejparte interesas projektajn prizorgantojn.) `make all` faras la samon kiel `latexmk` (vidu malsupre), kio povas esti utila por redaktila integriĝo (ekz. Emakso).
-* `scripts/ebook/` - bitlibrgeneraciaj skriptoj.
+* `latexmkrc` - агордас [latexmk] пор конструи ла ПДФ-ойн пэр [LaTeX].
+* `GNUMakefile` - энһавас цэлойн пор фари Зип-досиэрон дэ ла ПДФ-ой кай элдони илин ал GitHub. (Плэйпартэ интэрэсас проектайн призоргантойн.) `make all` фарас ла самон киэл `latexmk` (виду малсупрэ), кио повас эсти утила пор рэдактила интэгриӝо (экз. Эмаксо).
+* `scripts/ebook/` - битлибргэнэрациай скриптой.
 
 ## Kunmeti la libtro(j)
 
