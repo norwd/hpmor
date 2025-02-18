@@ -41,10 +41,10 @@
 \newcommand{\spell}[1]{{\Star}\emph{#1}{\Star}}
 
 % Author’s notes
-% \newcommand{\authorsnotefootnotemark}{\footnotemark}
-% \newcommand{\authorsnotetext}[1]{\footnotetext{Author’s note: #1}}
-\newcommand{\authorsnotefootnotemark}{}
-\newcommand{\authorsnotetext}[1]{}
+\newcommand{\authorsnotefootnotemark}{\footnotemark}
+\newcommand{\authorsnotetext}[1]{\footnotetext{Noto de la aŭtoro: #1}}
+\newcommand{\translatorsnotefootnotemark}{\footnotemark}
+\newcommand{\translatorsnotetext}[1]{\footnotetext{Noto de la tradukisto: #1}}
 
 % McGonagall's board
 \newcommand{\McGonagallWhiteBoard}[1]{%
@@ -183,3 +183,15 @@
 % A break followed by a new section
 \newcommand{\latersection}[1]{\sbre@k\section{#1}}
 \makeatother
+
+% Toggle IsEnglish for debugging
+%
+%     \iftoggle{isEnglish}{%
+%         \lettrine{E}{very} inch of wall space is covered by a bookcase.
+%     }{%
+%         \lettrine{Ĉ}{iu} colo de muro-spaco estas kovrita per libro-ŝrankaĵo.
+%     }
+%
+% See: https://tex.stackexchange.com/a/5896
+\newtoggle{isEnglish}
+\togglefalse{isEnglish} % or \toggletrue{isEnglish}
