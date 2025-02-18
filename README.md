@@ -1,6 +1,6 @@
-<span lang="eo">
+<span lang="eo-Cyrl">
 
-# Hari Potr kaj la Metodoj de Racionaleco
+# Һари Потр кай ла Мэтодой дэ Рационалэцо
 
 <!-- Por angligi, uzu tiun ĉi ŝablonon:
 <details lang="en-GB">
@@ -44,29 +44,28 @@ of the chapters.
 </blockquote>
 </details>
 
-Prizorgita de Ruben Tomas, kaj tradukita de J. Mejer-Norŭud.
+Призоргита дэ Рубэн Томас, кай традукита дэ Ю. Мэер-Норўуд.
 
-Ĉi tio estas [LaTeX]-a versio de [la popular didaktika fanfikcio][HPMOR] de Eliezer Judkaŭski,
-kiu povas fariĝi bitlibrojn en multaj formatoj[^subtenataj-formatoj],
-aŭ ses volumojn kiujn oni povas presi kaj bindi.
-Ankaŭ estas polvkovriloj por la preseblaj volumoj.
+Чи тио эстас [LaTeX]-а вэрсио дэ [ла популара дидактика фанфикцио][HPMOR] дэ Элиэзэр Юдкаўски,
+киу повас фариӝи битлибройн эн мултай форматой[^subtenataj-formatoj],
+аў сэс волумойн киуйн они повас прэси кай бинди.
+Анкаў эстас полвковрилой пор ла прэсэблай волумой.
 
+[^subtenataj-formatoj]: Субтэнатай форматой эстас ПДФ, эПуб кай Моби.
 
-[^subtenataj-formatoj]: Subtenataj formatoj estas PDF, ePub kaj Mobi.
+Виду [ла ластан элдонон](https://github.com/norwd/hpmor/releases/latest) пор элшути ПДФ-ойн анд битлибройн.
 
-Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por elŝuti PDF-ojn and bitlibrojn.
+Пор кунмэти ла либрон, они бэзонас [TeXLive] (2015-а аў пли фрэша) кай [git]. (Римарку: ла либро дэвас эсти кунмэтита дэ гитвэрсиконтрола элпрэно)
 
-Por kunmeti la libron, oni bezonas [TeXLive] (2015-a aŭ pli freŝa) kaj [git]. (Rimarku: la libro devas esti kunmetita de gitversikontrola elpreno)
-
-Rimarku: en la originala libro estas bonusaĵoj (angle nomata "Omake Files"[^omake], t.e. ĉapitroj 11 kaj 64).
-Tiuj ĉapitroj estas forigitaj ĉar ili estas nekanonaj (kaj ili ne estas parto de la rakonto).
-Tial tiuj ĉapitraj numeroj estas ellasitaj en la teksto, do ekzemple ĉapitro 10 estas sekvata de ĉapitro 12.
-En la ses-volumaj PDF-oj, ĉiuj ĉapitroj estas renumeritaj de 1 ĉe la komenco de la volumo, kaj ne estas apendicoj.
-Kelkaj epigrafoj estas ellasitaj sed restas en la font-dosieroj de la ĉapitroj.
+Римарку: эн ла оригинала либро эстас бонусажой (англэ номата "Omake Files"[^omake], т.э. чапитрой 11 кай 64).
+Тиуй чапитрой эстас форигитай чар или эстас нэканонай (кай или нэ эстас парто дэ ла раконто).
+Тиал тиуй чапитрай нумэрой эстас элласитай эн ла тэксто, до экзэмплэ чапитро 10 эстас сэквата дэ чапитро 12.
+Эн ла сэс-волумай ПДФ-ой, чиуй чапитрой эстас рэнумэритай дэ 1 чэ ла комэнцо дэ ла волумо, кай нэ эстас апэндицой.
+Кэлкай эпиграфой эстас элласитай сэд рэстас эн ла фонт-досиэрой дэ ла чапитрой.
 
 [^omake]: https://en.wikipedia.org/wiki/Omake
 
-## Dosieroj
+## Досиэрой
 
 <details lang="en-GB">
 <summary><i>Click to read this section in English</i></summary>
@@ -91,15 +90,15 @@ Kelkaj epigrafoj estas ellasitaj sed restas en la font-dosieroj de la ĉapitroj.
 </blockquote>
 </details>
 
-* `hpmor.tex` - la ĉefa dosiero.
-* `layout/hp-format.tex` - plejparte agordas [memoir].
-* `layout/hp-markup.tex` - logikaj markadaj komandoj uzataj en la teksto.
-* `chapters/` - unu dosiero po ĉapitro, inkluzataj en `hpmor.tex` kaj la unuopaj volumoj `hpmor-N.tex`.
-* `spelling-list.txt` - listo de vortoj uzataj por literumkorekti la libron.
+* `hpmor.tex` - ла чэфа досиэро.
+* `layout/hp-format.tex` - плэйпартэ агордас [memoir].
+* `layout/hp-markup.tex` - логикай маркадай командой узатай эн ла тэксто.
+* `chapters/` - уну досиэро по чапитро, инклузатай эн `hpmor.tex` кай ла унуопай волумой `hpmor-N.tex`.
+* `spelling-list.txt` - листо дэ вортой узатай пор литэрумкорэкти ла либрон.
 * `fonts/` - diversaj tiparoj uzataj.
-* `latexmkrc` - agordas [latexmk] por konstrui la PDF-ojn per [LaTeX].
-* `GNUMakefile` - enhavas celojn por fari Zip-dosieron de la PDF-oj kaj eldoni ilin al GitHub. (Plejparte interesas projektajn prizorgantojn.) `make all` faras la samon kiel `latexmk` (vidu malsupre), kio povas esti utila por redaktila integriĝo (ekz. Emakso).
-* `scripts/ebook/` - bitlibrgeneraciaj skriptoj.
+* `latexmkrc` - агордас [latexmk] пор конструи ла ПДФ-ойн пэр [LaTeX].
+* `GNUMakefile` - энһавас цэлойн пор фари Зип-досиэрон дэ ла ПДФ-ой кай элдони илин ал GitHub. (Плэйпартэ интэрэсас проектайн призоргантойн.) `make all` фарас ла самон киэл `latexmk` (виду малсупрэ), кио повас эсти утила пор рэдактила интэгриӝо (экз. Эмаксо).
+* `scripts/ebook/` - битлибргэнэрациай скриптой.
 
 ## Kunmeti la libtro(j)
 
