@@ -53,7 +53,7 @@ Ankaŭ estas polvkovriloj por la preseblaj volumoj.
 
 [^subtenataj-formatoj]: Subtenataj formatoj estas PDF, ePub kaj Mobi.
 
-Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por elŝuti PDF-ojn and bitlibrojn.
+Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por elŝuti PDF-ojn kaj bitlibrojn.
 
 Por kunmeti la libron, oni bezonas [TeXLive] (2015-a aŭ pli freŝa) kaj [git]. (Rimarku: la libro devas esti kunmetita de gitversikontrola elpreno)
 
