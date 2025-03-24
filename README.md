@@ -46,15 +46,14 @@ of the chapters.
 
 Prizorgita de Ruben Tomas, kaj tradukita de J. Mejer-Norŭud.
 
-Ĉi tio estas [LaTeX]-a versio de [la popular didaktika fanfikcio][HPMOR] de Eliezer Judkaŭski,
+Ĉi tio estas [LaTeX]-a versio de [la populara didaktika fanfikcio][HPMOR] de Eliezer Judkaŭski,
 kiu povas fariĝi bitlibrojn en multaj formatoj[^subtenataj-formatoj],
 aŭ ses volumojn kiujn oni povas presi kaj bindi.
 Ankaŭ estas polvkovriloj por la preseblaj volumoj.
 
-
 [^subtenataj-formatoj]: Subtenataj formatoj estas PDF, ePub kaj Mobi.
 
-Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por elŝuti PDF-ojn and bitlibrojn.
+Vidu [la lastan eldonon](https://github.com/norwd/hpmor/releases/latest) por elŝuti PDF-ojn kaj bitlibrojn.
 
 Por kunmeti la libron, oni bezonas [TeXLive] (2015-a aŭ pli freŝa) kaj [git]. (Rimarku: la libro devas esti kunmetita de gitversikontrola elpreno)
 
