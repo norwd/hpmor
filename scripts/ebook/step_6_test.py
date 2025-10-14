@@ -1,5 +1,4 @@
 """Unit Tests."""  # noqa: INP001
-# ruff: noqa: S101
 
 from step_6 import fix_ellipsis
 
